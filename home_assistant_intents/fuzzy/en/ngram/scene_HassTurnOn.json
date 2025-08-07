@@ -1,0 +1,30 @@
+{
+    "order": 4,
+    "words": {
+        "<eps>": 0,
+        "<unk>": 1,
+        "<skip>": 2,
+        "activate": 3,
+        "the": 4,
+        "my": 5,
+        "our": 6,
+        "{name}": 7,
+        "scene": 8,
+        "on": 9,
+        "turn": 10,
+        "switch": 11,
+        "change": 12,
+        "bring": 13,
+        "transition": 14,
+        "to": 15,
+        "{area}": 16,
+        "in": 17,
+        "at": 18,
+        "of": 19,
+        "across": 20,
+        "around": 21,
+        "throughout": 22,
+        "<s>": 23,
+        "</s>": 24
+    }
+}

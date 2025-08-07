@@ -1,0 +1,25 @@
+{
+    "order": 4,
+    "words": {
+        "<eps>": 0,
+        "<unk>": 1,
+        "<skip>": 2,
+        "turn": 3,
+        "switch": 4,
+        "change": 5,
+        "bring": 6,
+        "on": 7,
+        "all": 8,
+        "the": 9,
+        "fans": 10,
+        "fan": 11,
+        "in": 12,
+        "my": 13,
+        "our": 14,
+        "{area}": 15,
+        "activate": 16,
+        "here": 17,
+        "<s>": 18,
+        "</s>": 19
+    }
+}

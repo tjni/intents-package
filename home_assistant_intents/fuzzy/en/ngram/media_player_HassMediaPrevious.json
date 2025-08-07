@@ -1,0 +1,29 @@
+{
+    "order": 4,
+    "words": {
+        "<eps>": 0,
+        "<unk>": 1,
+        "<skip>": 2,
+        "previous": 3,
+        "track": 4,
+        "item": 5,
+        "on": 6,
+        "for": 7,
+        "the": 8,
+        "my": 9,
+        "our": 10,
+        "{name}": 11,
+        "go": 12,
+        "back": 13,
+        "to": 14,
+        "last": 15,
+        "song": 16,
+        "replay": 17,
+        "play": 18,
+        "again": 19,
+        "in": 20,
+        "{area}": 21,
+        "<s>": 22,
+        "</s>": 23
+    }
+}

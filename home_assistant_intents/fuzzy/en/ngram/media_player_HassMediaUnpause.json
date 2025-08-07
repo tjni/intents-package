@@ -1,0 +1,25 @@
+{
+    "order": 4,
+    "words": {
+        "<eps>": 0,
+        "<unk>": 1,
+        "<skip>": 2,
+        "unpause": 3,
+        "resume": 4,
+        "the": 5,
+        "my": 6,
+        "our": 7,
+        "{name}": 8,
+        "music": 9,
+        "tv": 10,
+        "media": 11,
+        "in": 12,
+        "{area}": 13,
+        "shows": 14,
+        "show": 15,
+        "players": 16,
+        "player": 17,
+        "<s>": 18,
+        "</s>": 19
+    }
+}

@@ -1,0 +1,23 @@
+{
+    "order": 4,
+    "words": {
+        "<eps>": 0,
+        "<unk>": 1,
+        "<skip>": 2,
+        "activate": 3,
+        "run": 4,
+        "start": 5,
+        "turn": 6,
+        "switch": 7,
+        "change": 8,
+        "bring": 9,
+        "the": 10,
+        "my": 11,
+        "our": 12,
+        "{name}": 13,
+        "script": 14,
+        "on": 15,
+        "<s>": 16,
+        "</s>": 17
+    }
+}

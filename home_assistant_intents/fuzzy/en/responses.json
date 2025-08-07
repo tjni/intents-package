@@ -1,0 +1,131 @@
+{
+    "HassShoppingListCompleteItem": {
+        "item": {
+            "": "item_completed"
+        }
+    },
+    "HassTurnOff": {
+        "area domain": {
+            "light": "lights_area"
+        },
+        "domain floor": {
+            "light": "lights_floor"
+        },
+        "domain": {
+            "light": "lights_area",
+            "fan": "fans_area"
+        },
+        "area name": {
+            "cover": "cover",
+            "lock": "lock"
+        },
+        "name": {
+            "cover": "cover",
+            "lock": "lock",
+            "fan": "light_all",
+            "valve": "valve"
+        },
+        "device_class domain": {
+            "cover": "cover_device_class"
+        },
+        "area device_class domain": {
+            "cover": "cover_device_class"
+        },
+        "area domain name": {
+            "fan": "fans_area",
+            "lock": "lock"
+        },
+        "domain name": {
+            "fan": "light_all",
+            "valve": "valve"
+        }
+    },
+    "HassTurnOn": {
+        "area domain": {
+            "light": "lights_area",
+            "lock": "lock"
+        },
+        "domain floor": {
+            "light": "lights_floor"
+        },
+        "domain": {
+            "light": "lights_area",
+            "fan": "fans_area",
+            "lock": "lock"
+        },
+        "area domain name": {
+            "fan": "fans_area",
+            "scene": "scene"
+        },
+        "domain name": {
+            "script": "script",
+            "scene": "scene",
+            "valve": "valve"
+        },
+        "name": {
+            "script": "script",
+            "scene": "scene",
+            "valve": "valve",
+            "lock": "lock",
+            "cover": "cover"
+        },
+        "area name": {
+            "fan": "fans_area",
+            "scene": "scene",
+            "lock": "lock",
+            "cover": "cover"
+        },
+        "device_class domain": {
+            "cover": "cover_device_class"
+        },
+        "area device_class domain": {
+            "cover": "cover_device_class"
+        }
+    },
+    "HassShoppingListAddItem": {
+        "item": {
+            "": "item_added"
+        }
+    },
+    "HassLightSet": {
+        "brightness name": {
+            "light": "brightness"
+        },
+        "area brightness": {
+            "": "brightness"
+        },
+        "brightness": {
+            "": "brightness"
+        },
+        "brightness floor": {
+            "": "brightness"
+        },
+        "color name": {
+            "light": "color"
+        },
+        "area color": {
+            "": "color"
+        },
+        "color": {
+            "": "color"
+        },
+        "color floor": {
+            "": "color"
+        }
+    },
+    "HassSetPosition": {
+        "device_class domain position": {
+            "cover": "cover_device_class"
+        }
+    },
+    "HassListAddItem": {
+        "item name": {
+            "todo": "item_added"
+        }
+    },
+    "HassListCompleteItem": {
+        "item name": {
+            "todo": "item_completed"
+        }
+    }
+}

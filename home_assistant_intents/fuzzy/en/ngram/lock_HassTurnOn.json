@@ -1,0 +1,29 @@
+{
+    "order": 4,
+    "words": {
+        "<eps>": 0,
+        "<unk>": 1,
+        "<skip>": 2,
+        "lock": 3,
+        "the": 4,
+        "my": 5,
+        "our": 6,
+        "{name}": 7,
+        "in": 8,
+        "{area}": 9,
+        "all": 10,
+        "locks": 11,
+        "doors": 12,
+        "door": 13,
+        "windows": 14,
+        "window": 15,
+        "gates": 16,
+        "gate": 17,
+        "garage": 18,
+        "shutters": 19,
+        "shutter": 20,
+        "of": 21,
+        "<s>": 22,
+        "</s>": 23
+    }
+}

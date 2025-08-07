@@ -1,0 +1,19 @@
+{
+    "order": 4,
+    "words": {
+        "<eps>": 0,
+        "<unk>": 1,
+        "<skip>": 2,
+        "start": 3,
+        "the": 4,
+        "my": 5,
+        "our": 6,
+        "{name}": 7,
+        "vacuum": 8,
+        "clean": 9,
+        "{floor}": 10,
+        "floor": 11,
+        "<s>": 12,
+        "</s>": 13
+    }
+}

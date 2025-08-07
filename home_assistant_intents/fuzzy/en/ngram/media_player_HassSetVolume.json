@@ -1,0 +1,31 @@
+{
+    "order": 4,
+    "words": {
+        "<eps>": 0,
+        "<unk>": 1,
+        "<skip>": 2,
+        "set": 3,
+        "change": 4,
+        "turn": 5,
+        "increase": 6,
+        "decrease": 7,
+        "make": 8,
+        "the": 9,
+        "my": 10,
+        "our": 11,
+        "{name}": 12,
+        "volume": 13,
+        "to": 14,
+        "{volume_level}": 15,
+        "{volume_level}%": 16,
+        "%": 17,
+        "percent": 18,
+        "up": 19,
+        "down": 20,
+        "on": 21,
+        "{area}": 22,
+        "in": 23,
+        "<s>": 24,
+        "</s>": 25
+    }
+}

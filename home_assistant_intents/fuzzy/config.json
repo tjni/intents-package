@@ -1,0 +1,250 @@
+{
+    "slot_combinations": {
+        "HassTurnOn": {
+            "domain": [],
+            "name": [
+                "cover",
+                "lock",
+                "input_boolean",
+                "valve",
+                "switch",
+                "light",
+                "fan",
+                "media_player",
+                "script",
+                "scene"
+            ],
+            "area domain": [],
+            "device_class domain": [],
+            "area name": [
+                "cover",
+                "lock",
+                "input_boolean",
+                "valve",
+                "switch",
+                "light",
+                "fan",
+                "media_player"
+            ],
+            "floor name": [
+                "cover",
+                "valve",
+                "input_boolean",
+                "switch",
+                "light",
+                "fan",
+                "media_player"
+            ],
+            "area device_class domain": [],
+            "device_class domain floor": []
+        },
+        "HassTurnOff": {
+            "domain": [],
+            "name": [
+                "cover",
+                "lock",
+                "input_boolean",
+                "valve",
+                "switch",
+                "light",
+                "fan",
+                "media_player"
+            ],
+            "area domain": [],
+            "device_class domain": [],
+            "area name": [
+                "cover",
+                "lock",
+                "input_boolean",
+                "switch",
+                "light",
+                "fan",
+                "optional",
+                "media_player"
+            ],
+            "floor name": [
+                "cover",
+                "valve",
+                "input_boolean",
+                "switch",
+                "light",
+                "fan",
+                "media_player"
+            ],
+            "area device_class domain": [],
+            "device_class domain floor": []
+        },
+        "HassNevermind": {
+            "": []
+        },
+        "HassSetPosition": {
+            "name position": [
+                "valve",
+                "cover"
+            ]
+        },
+        "HassGetCurrentDate": {
+            "": []
+        },
+        "HassGetCurrentTime": {
+            "": []
+        },
+        "HassLightSet": {
+            "brightness name": [
+                "light"
+            ],
+            "color name": [
+                "light"
+            ],
+            "brightness": [],
+            "area brightness": [],
+            "brightness floor": [],
+            "color": [],
+            "area color": [],
+            "color floor": []
+        },
+        "HassClimateSetTemperature": {
+            "temperature": [],
+            "name temperature": [
+                "climate"
+            ],
+            "area temperature": [],
+            "floor temperature": []
+        },
+        "HassClimateGetTemperature": {
+            "": [],
+            "name": [
+                "climate"
+            ],
+            "area": [],
+            "floor": []
+        },
+        "HassShoppingListAddItem": {
+            "item": []
+        },
+        "HassShoppingListCompleteItem": {
+            "item": []
+        },
+        "HassGetWeather": {
+            "": [],
+            "name": [
+                "weather"
+            ]
+        },
+        "HassListAddItem": {
+            "item name": [
+                "todo"
+            ]
+        },
+        "HassListCompleteItem": {
+            "item name": [
+                "name"
+            ]
+        },
+        "HassVacuumStart": {
+            "name": [
+                "vacuum"
+            ],
+            "area": [],
+            "floor": []
+        },
+        "HassVacuumReturnToBase": {
+            "name": [
+                "vacuum"
+            ],
+            "area": []
+        },
+        "HassMediaPause": {
+            "": [],
+            "name": [
+                "media_player"
+            ],
+            "area": []
+        },
+        "HassMediaUnpause": {
+            "": [],
+            "name": [
+                "media_player"
+            ],
+            "area": []
+        },
+        "HassMediaNext": {
+            "": [],
+            "name": [
+                "media_player"
+            ],
+            "area": []
+        },
+        "HassMediaPrevious": {
+            "": [],
+            "name": [
+                "media_player"
+            ],
+            "area": []
+        },
+        "HassSetVolume": {
+            "volume_level": [],
+            "name volume_level": [
+                "media_player"
+            ],
+            "area volume_level": []
+        },
+        "HassTimerStatus": {
+            "": [],
+            "area": [],
+            "start_hours": [],
+            "start_minutes": [],
+            "start_seconds": []
+        }
+    },
+    "slot_list_names": {
+        "cover_classes": [
+            "device_class"
+        ],
+        "shopping_list_item": [
+            "item"
+        ],
+        "timer_seconds": [
+            "start_seconds"
+        ],
+        "timer_minutes": [
+            "start_minutes"
+        ],
+        "timer_hours": [
+            "start_hours"
+        ],
+        "timer_name": [
+            "name"
+        ],
+        "position": [
+            "position"
+        ],
+        "brightness": [
+            "brightness"
+        ],
+        "brightness_level": [
+            "brightness"
+        ],
+        "color": [
+            "color"
+        ],
+        "todo_list_item": [
+            "item"
+        ],
+        "volume": [
+            "volume_level"
+        ],
+        "temperature": [
+            "temperature"
+        ],
+        "name": [
+            "name"
+        ],
+        "area": [
+            "area"
+        ],
+        "floor": [
+            "floor"
+        ]
+    }
+}

@@ -1,0 +1,22 @@
+{
+    "order": 4,
+    "words": {
+        "<eps>": 0,
+        "<unk>": 1,
+        "<skip>": 2,
+        "what's": 3,
+        "whats": 4,
+        "what": 5,
+        "tell": 6,
+        "the": 7,
+        "current": 8,
+        "time": 9,
+        "is": 10,
+        "me": 11,
+        "it": 12,
+        "right": 13,
+        "now": 14,
+        "<s>": 15,
+        "</s>": 16
+    }
+}
