@@ -25,7 +25,7 @@ classifiers = [
 requires-python = ">=3.9.0"
 
 [project.urls]
-"Source Code" = "https://github.com/home-assistant/intents"
+"Source Code" = "https://github.com/OHF-Voice/intents"
 
 [tool.setuptools]
 platforms = ["any"]

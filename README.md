@@ -1,6 +1,6 @@
 # Home Assistant Intents Package
 
-Packaging for [intents](https://github.com/home-assistant/intents/)
+Packaging for [intents](https://github.com/OHF-Voice/intents/)
 
 
 ## Install
@@ -8,7 +8,7 @@ Packaging for [intents](https://github.com/home-assistant/intents/)
 Clone the repo and create a virtual environment:
 
 ``` sh
-git clone --recursive https://github.com/home-assistant/intents-package
+git clone --recursive https://github.com/OHF-Voice/intents-package
 cd intents-package
 script/setup
 ```

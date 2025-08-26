@@ -1,4 +1,4 @@
 [submodule "intents"]
 	path = intents
-	url = https://github.com/home-assistant/intents/
+	url = https://github.com/OHF-Voice/intents/
 	branch = main
