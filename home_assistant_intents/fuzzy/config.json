@@ -3,13 +3,13 @@
         "HassTurnOn": {
             "domain": [],
             "name": [
-                "cover",
-                "lock",
                 "input_boolean",
-                "valve",
                 "switch",
-                "light",
+                "lock",
                 "fan",
+                "cover",
+                "light",
+                "valve",
                 "media_player",
                 "script",
                 "scene"
@@ -17,22 +17,22 @@
             "area domain": [],
             "device_class domain": [],
             "area name": [
-                "cover",
-                "lock",
                 "input_boolean",
-                "valve",
                 "switch",
-                "light",
+                "lock",
                 "fan",
+                "cover",
+                "light",
+                "valve",
                 "media_player"
             ],
             "floor name": [
-                "cover",
-                "valve",
                 "input_boolean",
                 "switch",
-                "light",
                 "fan",
+                "cover",
+                "light",
+                "valve",
                 "media_player"
             ],
             "area device_class domain": [],
@@ -41,34 +41,34 @@
         "HassTurnOff": {
             "domain": [],
             "name": [
-                "cover",
-                "lock",
                 "input_boolean",
-                "valve",
                 "switch",
-                "light",
+                "lock",
                 "fan",
+                "cover",
+                "light",
+                "valve",
                 "media_player"
             ],
             "area domain": [],
             "device_class domain": [],
             "area name": [
-                "cover",
-                "lock",
                 "input_boolean",
                 "switch",
-                "light",
+                "lock",
                 "fan",
+                "cover",
+                "light",
                 "optional",
                 "media_player"
             ],
             "floor name": [
-                "cover",
-                "valve",
                 "input_boolean",
                 "switch",
-                "light",
                 "fan",
+                "cover",
+                "light",
+                "valve",
                 "media_player"
             ],
             "area device_class domain": [],
@@ -79,8 +79,8 @@
         },
         "HassSetPosition": {
             "name position": [
-                "valve",
-                "cover"
+                "cover",
+                "valve"
             ]
         },
         "HassGetCurrentDate": {
@@ -189,12 +189,27 @@
             ],
             "area volume_level": []
         },
+        "HassSetVolumeRelative": {
+            "volume_step": [],
+            "name volume_step": [
+                "media_player"
+            ],
+            "area volume_step": []
+        },
         "HassTimerStatus": {
             "": [],
             "area": [],
             "start_hours": [],
             "start_minutes": [],
             "start_seconds": []
+        },
+        "HassFanSetSpeed": {
+            "percentage": [],
+            "name percentage": [
+                "fan"
+            ],
+            "area percentage": [],
+            "floor percentage": []
         }
     },
     "slot_list_names": {
@@ -228,6 +243,9 @@
         "color": [
             "color"
         ],
+        "fan_speed": [
+            "percentage"
+        ],
         "todo_list_item": [
             "item"
         ],
@@ -236,6 +254,12 @@
         ],
         "temperature": [
             "temperature"
+        ],
+        "volume_step_up": [
+            "volume_step"
+        ],
+        "volume_step_down": [
+            "volume_step"
         ],
         "name": [
             "name"
