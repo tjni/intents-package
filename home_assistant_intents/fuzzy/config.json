@@ -4,13 +4,13 @@
             "domain": [],
             "name": [
                 "input_boolean",
-                "switch",
-                "lock",
-                "fan",
                 "cover",
-                "light",
+                "lock",
                 "valve",
+                "switch",
                 "media_player",
+                "fan",
+                "light",
                 "script",
                 "scene"
             ],
@@ -18,22 +18,22 @@
             "device_class domain": [],
             "area name": [
                 "input_boolean",
-                "switch",
-                "lock",
-                "fan",
                 "cover",
-                "light",
+                "lock",
                 "valve",
-                "media_player"
+                "switch",
+                "media_player",
+                "fan",
+                "light"
             ],
             "floor name": [
                 "input_boolean",
-                "switch",
-                "fan",
                 "cover",
-                "light",
                 "valve",
-                "media_player"
+                "switch",
+                "media_player",
+                "fan",
+                "light"
             ],
             "area device_class domain": [],
             "device_class domain floor": []
@@ -42,34 +42,34 @@
             "domain": [],
             "name": [
                 "input_boolean",
-                "switch",
-                "lock",
-                "fan",
                 "cover",
-                "light",
+                "lock",
                 "valve",
-                "media_player"
+                "switch",
+                "media_player",
+                "fan",
+                "light"
             ],
             "area domain": [],
             "device_class domain": [],
             "area name": [
                 "input_boolean",
-                "switch",
-                "lock",
-                "fan",
                 "cover",
-                "light",
+                "lock",
+                "switch",
                 "optional",
-                "media_player"
+                "media_player",
+                "fan",
+                "light"
             ],
             "floor name": [
                 "input_boolean",
-                "switch",
-                "fan",
                 "cover",
-                "light",
                 "valve",
-                "media_player"
+                "switch",
+                "media_player",
+                "fan",
+                "light"
             ],
             "area device_class domain": [],
             "device_class domain floor": []
