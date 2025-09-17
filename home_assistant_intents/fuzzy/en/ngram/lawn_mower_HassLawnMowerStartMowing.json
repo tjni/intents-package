@@ -1,0 +1,19 @@
+{
+    "order": 4,
+    "words": {
+        "<eps>": 0,
+        "<unk>": 1,
+        "<skip>": 2,
+        "start": 3,
+        "mow": 4,
+        "mowing": 5,
+        "the": 6,
+        "my": 7,
+        "our": 8,
+        "lawn": 9,
+        "mower": 10,
+        "{name}": 11,
+        "<s>": 12,
+        "</s>": 13
+    }
+}

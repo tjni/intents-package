@@ -1,0 +1,23 @@
+{
+    "order": 4,
+    "words": {
+        "<eps>": 0,
+        "<unk>": 1,
+        "<skip>": 2,
+        "stop": 3,
+        "cancel": 4,
+        "mowing": 5,
+        "the": 6,
+        "my": 7,
+        "our": 8,
+        "lawn": 9,
+        "mower": 10,
+        "dock": 11,
+        "{name}": 12,
+        "return": 13,
+        "to": 14,
+        "base": 15,
+        "<s>": 16,
+        "</s>": 17
+    }
+}
