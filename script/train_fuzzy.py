@@ -1,6 +1,6 @@
 import argparse
-import json
 import itertools
+import json
 import logging
 import os
 import shlex
@@ -8,25 +8,25 @@ import shutil
 import sqlite3
 import subprocess
 import tempfile
-from dataclasses import dataclass, field
 from collections import defaultdict
 from collections.abc import Iterable
+from dataclasses import dataclass
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Union, Set, Tuple
+from typing import Any, Dict, List, Optional, Set, Tuple, Union
 
 from hassil import IntentData, Intents
-from hassil.fst import intents_to_fst
 from hassil.expression import (
-    Group,
+    Alternative,
     Expression,
+    Group,
     ListReference,
+    Permutation,
     RuleReference,
     Sequence,
-    Alternative,
-    Permutation,
 )
+from hassil.fst import intents_to_fst
 from hassil.intents import WildcardSlotList
-from hassil.ngram import MemoryNgramModel, BOS, EOS
+from hassil.ngram import BOS, EOS, MemoryNgramModel
 from yaml import safe_load
 
 _LOGGER = logging.getLogger(__name__)
@@ -198,7 +198,7 @@ class SpeechTools:
         return stdout
 
     def run_pipeline(
-        self, *commands: List[str], input: Optional[bytes] = None, **kwargs
+        self, *commands: List[str], input_bytes: Optional[bytes] = None, **kwargs
     ) -> bytes:
         if "env" not in kwargs:
             kwargs["env"] = self.extended_env
@@ -215,7 +215,7 @@ class SpeechTools:
         proc = subprocess.Popen(
             command_str, stdout=subprocess.PIPE, shell=True, **kwargs
         )
-        stdout, stderr = proc.communicate(input=input)
+        stdout, stderr = proc.communicate(input=input_bytes)
         if proc.returncode != 0:
             error_text = f"Unexpected error running command {command_str}"
             if stderr:

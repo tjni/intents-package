@@ -228,10 +228,7 @@ def get_fuzzy_config(
             }
             for intent_name, intent_combos in config_dict["slot_combinations"].items()
         },
-        slot_list_names={
-            list_name: slot_names
-            for list_name, slot_names in config_dict["slot_list_names"].items()
-        },
+        slot_list_names=config_dict["slot_list_names"],
     )
 
 
