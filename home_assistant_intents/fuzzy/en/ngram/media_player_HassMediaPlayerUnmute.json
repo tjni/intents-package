@@ -1,0 +1,26 @@
+{
+    "order": 4,
+    "words": {
+        "<eps>": 0,
+        "<unk>": 1,
+        "<skip>": 2,
+        "unmute": 3,
+        "the": 4,
+        "music": 5,
+        "media": 6,
+        "in": 7,
+        "here": 8,
+        "this": 9,
+        "my": 10,
+        "our": 11,
+        "room": 12,
+        "area": 13,
+        "space": 14,
+        "players": 15,
+        "player": 16,
+        "{name}": 17,
+        "on": 18,
+        "<s>": 19,
+        "</s>": 20
+    }
+}

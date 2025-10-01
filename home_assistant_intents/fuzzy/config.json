@@ -3,37 +3,37 @@
         "HassTurnOn": {
             "domain": [],
             "name": [
-                "lock",
-                "valve",
+                "switch",
                 "light",
                 "input_boolean",
-                "switch",
                 "media_player",
                 "cover",
+                "lock",
                 "fan",
+                "valve",
                 "script",
                 "scene"
             ],
             "area domain": [],
             "device_class domain": [],
             "area name": [
-                "lock",
-                "valve",
+                "switch",
                 "light",
                 "input_boolean",
-                "switch",
                 "media_player",
                 "cover",
-                "fan"
+                "lock",
+                "fan",
+                "valve"
             ],
             "floor name": [
-                "valve",
+                "switch",
                 "light",
                 "input_boolean",
-                "switch",
                 "media_player",
                 "cover",
-                "fan"
+                "fan",
+                "valve"
             ],
             "area device_class domain": [],
             "device_class domain floor": []
@@ -41,35 +41,35 @@
         "HassTurnOff": {
             "domain": [],
             "name": [
-                "lock",
-                "valve",
+                "switch",
                 "light",
                 "input_boolean",
-                "switch",
                 "media_player",
                 "cover",
-                "fan"
+                "lock",
+                "fan",
+                "valve"
             ],
             "area domain": [],
             "device_class domain": [],
             "area name": [
-                "lock",
-                "light",
-                "optional",
-                "input_boolean",
                 "switch",
+                "optional",
+                "light",
+                "input_boolean",
                 "media_player",
                 "cover",
+                "lock",
                 "fan"
             ],
             "floor name": [
-                "valve",
+                "switch",
                 "light",
                 "input_boolean",
-                "switch",
                 "media_player",
                 "cover",
-                "fan"
+                "fan",
+                "valve"
             ],
             "area device_class domain": [],
             "device_class domain floor": []
@@ -188,6 +188,18 @@
                 "media_player"
             ],
             "area volume_level": []
+        },
+        "HassMediaPlayerMute": {
+            "": [],
+            "name": [
+                "media_player"
+            ]
+        },
+        "HassMediaPlayerUnmute": {
+            "": [],
+            "name": [
+                "media_player"
+            ]
         },
         "HassSetVolumeRelative": {
             "volume_step": [],
