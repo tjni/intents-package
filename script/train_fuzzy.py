@@ -10,7 +10,7 @@ import subprocess
 import tempfile
 from collections import defaultdict
 from collections.abc import Iterable
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Set, Tuple, Union
 
@@ -231,6 +231,12 @@ class SpeechTools:
 # -----------------------------------------------------------------------------
 
 
+@dataclass
+class SlotCombinationInfo:
+    context_area: bool = False
+    name_domains: Set[str] = field(default_factory=set)
+
+
 def _get_slots(
     e: Expression,
     data: IntentData,
@@ -353,25 +359,28 @@ def main() -> None:
 
     # TODO: virtual intents for: covers/valves, locks, scripts, scenes
     intent_slot_names = set()
-    slot_combinations = defaultdict(lambda: defaultdict(list))
+    slot_combinations = defaultdict(lambda: defaultdict(SlotCombinationInfo))
     for intent_name, intent_info in intents_info.items():
         if intent_name in SKIP_INTENTS:
             continue
 
         intent_slot_names.update(intent_info.get("slots", {}).keys())
 
-        for combo_info in intent_info.get("slot_combinations", {}).values():
-            combo_key = tuple(sorted(combo_info["slots"]))
+        for combo_dict in intent_info.get("slot_combinations", {}).values():
+            combo_key = tuple(sorted(combo_dict["slots"]))
 
             if ("name" in combo_key) and (intent_name in NAME_SKIP_INTENTS):
                 # Ignore names that aren't entities
                 continue
 
-            name_domains = combo_info.get("name_domains")
-            if name_domains:
-                name_domains = set(itertools.chain.from_iterable(name_domains.values()))
+            combo_info = slot_combinations[intent_name][combo_key]
+            combo_info.context_area = combo_dict.get("context_area", False)
 
-            slot_combinations[intent_name][combo_key].append(name_domains)
+            name_domains = combo_dict.get("name_domains")
+            if name_domains:
+                combo_info.name_domains.update(
+                    itertools.chain.from_iterable(name_domains.values())
+                )
 
     intent_slot_list_names = defaultdict(set)
     for intent_name, intent_info in lang_intents.intents.items():
@@ -419,10 +428,11 @@ def main() -> None:
             {
                 "slot_combinations": {
                     intent_name: {
-                        " ".join(combo_key): list(
-                            itertools.chain.from_iterable(filter(None, name_domains))
-                        )
-                        for combo_key, name_domains in intent_combos.items()
+                        " ".join(combo_key): {
+                            "context_area": combo_info.context_area,
+                            "name_domains": sorted(combo_info.name_domains),
+                        }
+                        for combo_key, combo_info in intent_combos.items()
                     }
                     for intent_name, intent_combos in slot_combinations.items()
                 },

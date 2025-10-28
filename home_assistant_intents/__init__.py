@@ -9,6 +9,7 @@ from enum import Enum
 from pathlib import Path
 from typing import IO, Any, Callable, Collection, Dict, List, Optional, Set, Tuple
 
+
 from .languages import LANGUAGES
 
 _PACKAGE = "home_assistant_intents"
@@ -162,12 +163,20 @@ def get_language_scores(
 
 
 @dataclass
+class FuzzySlotCombinationInfo:
+    """Information about a fuzzy slot combination."""
+
+    context_area: bool
+    name_domains: Set[str]
+
+
+@dataclass
 class FuzzyConfig:
     """Shared configuration for fuzzy matching."""
 
-    # intent -> (slot, slot) -> {name domains}
-    slot_combinations: Dict[str, Dict[Tuple[str, ...], Set[str]]]
-    """Name domains for all intent slot combinations."""
+    # intent -> (slot, slot) -> slot combo info
+    slot_combinations: Dict[str, Dict[Tuple[str, ...], FuzzySlotCombinationInfo]]
+    """info for all intent slot combinations."""
 
     # list name -> [slot names]
     slot_list_names: Dict[str, List[str]]
@@ -223,8 +232,11 @@ def get_fuzzy_config(
     return FuzzyConfig(
         slot_combinations={
             intent_name: {
-                tuple(sorted(combo_key_str.split())): set(name_domains)
-                for combo_key_str, name_domains in intent_combos.items()
+                tuple(sorted(combo_key_str.split())): FuzzySlotCombinationInfo(
+                    context_area=combo_info.get("context_area", False),
+                    name_domains=set(combo_info.get("name_domains", [])),
+                )
+                for combo_key_str, combo_info in intent_combos.items()
             }
             for intent_name, intent_combos in config_dict["slot_combinations"].items()
         },

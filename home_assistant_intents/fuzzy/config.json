@@ -1,239 +1,485 @@
 {
     "slot_combinations": {
         "HassTurnOn": {
-            "domain": [],
-            "name": [
-                "switch",
-                "light",
-                "input_boolean",
-                "media_player",
-                "cover",
-                "lock",
-                "fan",
-                "valve",
-                "script",
-                "scene"
-            ],
-            "area domain": [],
-            "device_class domain": [],
-            "area name": [
-                "switch",
-                "light",
-                "input_boolean",
-                "media_player",
-                "cover",
-                "lock",
-                "fan",
-                "valve"
-            ],
-            "floor name": [
-                "switch",
-                "light",
-                "input_boolean",
-                "media_player",
-                "cover",
-                "fan",
-                "valve"
-            ],
-            "area device_class domain": [],
-            "device_class domain floor": []
+            "domain": {
+                "context_area": true,
+                "name_domains": []
+            },
+            "name": {
+                "context_area": false,
+                "name_domains": [
+                    "cover",
+                    "fan",
+                    "input_boolean",
+                    "light",
+                    "lock",
+                    "media_player",
+                    "scene",
+                    "script",
+                    "switch",
+                    "valve"
+                ]
+            },
+            "area domain": {
+                "context_area": false,
+                "name_domains": []
+            },
+            "device_class domain": {
+                "context_area": true,
+                "name_domains": []
+            },
+            "area name": {
+                "context_area": false,
+                "name_domains": [
+                    "cover",
+                    "fan",
+                    "input_boolean",
+                    "light",
+                    "lock",
+                    "media_player",
+                    "switch",
+                    "valve"
+                ]
+            },
+            "floor name": {
+                "context_area": false,
+                "name_domains": [
+                    "cover",
+                    "fan",
+                    "input_boolean",
+                    "light",
+                    "media_player",
+                    "switch",
+                    "valve"
+                ]
+            },
+            "area device_class domain": {
+                "context_area": false,
+                "name_domains": []
+            },
+            "device_class domain floor": {
+                "context_area": false,
+                "name_domains": []
+            }
         },
         "HassTurnOff": {
-            "domain": [],
-            "name": [
-                "switch",
-                "light",
-                "input_boolean",
-                "media_player",
-                "cover",
-                "lock",
-                "fan",
-                "valve"
-            ],
-            "area domain": [],
-            "device_class domain": [],
-            "area name": [
-                "switch",
-                "optional",
-                "light",
-                "input_boolean",
-                "media_player",
-                "cover",
-                "lock",
-                "fan"
-            ],
-            "floor name": [
-                "switch",
-                "light",
-                "input_boolean",
-                "media_player",
-                "cover",
-                "fan",
-                "valve"
-            ],
-            "area device_class domain": [],
-            "device_class domain floor": []
+            "domain": {
+                "context_area": false,
+                "name_domains": []
+            },
+            "name": {
+                "context_area": false,
+                "name_domains": [
+                    "cover",
+                    "fan",
+                    "input_boolean",
+                    "light",
+                    "lock",
+                    "media_player",
+                    "switch",
+                    "valve"
+                ]
+            },
+            "area domain": {
+                "context_area": false,
+                "name_domains": []
+            },
+            "device_class domain": {
+                "context_area": true,
+                "name_domains": []
+            },
+            "area name": {
+                "context_area": false,
+                "name_domains": [
+                    "cover",
+                    "fan",
+                    "input_boolean",
+                    "light",
+                    "lock",
+                    "media_player",
+                    "optional",
+                    "switch"
+                ]
+            },
+            "floor name": {
+                "context_area": false,
+                "name_domains": [
+                    "cover",
+                    "fan",
+                    "input_boolean",
+                    "light",
+                    "media_player",
+                    "switch",
+                    "valve"
+                ]
+            },
+            "area device_class domain": {
+                "context_area": false,
+                "name_domains": []
+            },
+            "device_class domain floor": {
+                "context_area": false,
+                "name_domains": []
+            }
         },
         "HassNevermind": {
-            "": []
+            "": {
+                "context_area": false,
+                "name_domains": []
+            }
         },
         "HassSetPosition": {
-            "name position": [
-                "valve",
-                "cover"
-            ]
+            "name position": {
+                "context_area": false,
+                "name_domains": [
+                    "cover",
+                    "valve"
+                ]
+            }
         },
         "HassGetCurrentDate": {
-            "": []
+            "": {
+                "context_area": false,
+                "name_domains": []
+            }
         },
         "HassGetCurrentTime": {
-            "": []
+            "": {
+                "context_area": false,
+                "name_domains": []
+            }
         },
         "HassLightSet": {
-            "brightness name": [
-                "light"
-            ],
-            "color name": [
-                "light"
-            ],
-            "brightness": [],
-            "area brightness": [],
-            "brightness floor": [],
-            "color": [],
-            "area color": [],
-            "color floor": []
+            "brightness name": {
+                "context_area": false,
+                "name_domains": [
+                    "light"
+                ]
+            },
+            "color name": {
+                "context_area": false,
+                "name_domains": [
+                    "light"
+                ]
+            },
+            "brightness": {
+                "context_area": true,
+                "name_domains": []
+            },
+            "area brightness": {
+                "context_area": false,
+                "name_domains": []
+            },
+            "brightness floor": {
+                "context_area": false,
+                "name_domains": []
+            },
+            "color": {
+                "context_area": true,
+                "name_domains": []
+            },
+            "area color": {
+                "context_area": false,
+                "name_domains": []
+            },
+            "color floor": {
+                "context_area": false,
+                "name_domains": []
+            }
         },
         "HassClimateSetTemperature": {
-            "temperature": [],
-            "name temperature": [
-                "climate"
-            ],
-            "area temperature": [],
-            "floor temperature": []
+            "temperature": {
+                "context_area": true,
+                "name_domains": []
+            },
+            "name temperature": {
+                "context_area": false,
+                "name_domains": [
+                    "climate"
+                ]
+            },
+            "area temperature": {
+                "context_area": false,
+                "name_domains": []
+            },
+            "floor temperature": {
+                "context_area": false,
+                "name_domains": []
+            }
         },
         "HassClimateGetTemperature": {
-            "": [],
-            "name": [
-                "climate"
-            ],
-            "area": [],
-            "floor": []
+            "": {
+                "context_area": true,
+                "name_domains": []
+            },
+            "name": {
+                "context_area": false,
+                "name_domains": [
+                    "climate"
+                ]
+            },
+            "area": {
+                "context_area": false,
+                "name_domains": []
+            },
+            "floor": {
+                "context_area": false,
+                "name_domains": []
+            }
         },
         "HassShoppingListAddItem": {
-            "item": []
+            "item": {
+                "context_area": false,
+                "name_domains": []
+            }
         },
         "HassShoppingListCompleteItem": {
-            "item": []
+            "item": {
+                "context_area": false,
+                "name_domains": []
+            }
         },
         "HassGetWeather": {
-            "": [],
-            "name": [
-                "weather"
-            ]
+            "": {
+                "context_area": false,
+                "name_domains": []
+            },
+            "name": {
+                "context_area": false,
+                "name_domains": [
+                    "weather"
+                ]
+            }
         },
         "HassListAddItem": {
-            "item name": [
-                "todo"
-            ]
+            "item name": {
+                "context_area": false,
+                "name_domains": [
+                    "todo"
+                ]
+            }
         },
         "HassListCompleteItem": {
-            "item name": [
-                "name"
-            ]
+            "item name": {
+                "context_area": false,
+                "name_domains": [
+                    "name"
+                ]
+            }
         },
         "HassVacuumStart": {
-            "name": [
-                "vacuum"
-            ],
-            "area": [],
-            "floor": []
+            "name": {
+                "context_area": false,
+                "name_domains": [
+                    "vacuum"
+                ]
+            },
+            "area": {
+                "context_area": false,
+                "name_domains": []
+            },
+            "floor": {
+                "context_area": false,
+                "name_domains": []
+            }
         },
         "HassVacuumReturnToBase": {
-            "name": [
-                "vacuum"
-            ],
-            "area": []
+            "name": {
+                "context_area": false,
+                "name_domains": [
+                    "vacuum"
+                ]
+            },
+            "area": {
+                "context_area": false,
+                "name_domains": []
+            }
         },
         "HassMediaPause": {
-            "": [],
-            "name": [
-                "media_player"
-            ],
-            "area": []
+            "": {
+                "context_area": true,
+                "name_domains": []
+            },
+            "name": {
+                "context_area": false,
+                "name_domains": [
+                    "media_player"
+                ]
+            },
+            "area": {
+                "context_area": false,
+                "name_domains": []
+            }
         },
         "HassMediaUnpause": {
-            "": [],
-            "name": [
-                "media_player"
-            ],
-            "area": []
+            "": {
+                "context_area": true,
+                "name_domains": []
+            },
+            "name": {
+                "context_area": false,
+                "name_domains": [
+                    "media_player"
+                ]
+            },
+            "area": {
+                "context_area": false,
+                "name_domains": []
+            }
         },
         "HassMediaNext": {
-            "": [],
-            "name": [
-                "media_player"
-            ],
-            "area": []
+            "": {
+                "context_area": true,
+                "name_domains": []
+            },
+            "name": {
+                "context_area": false,
+                "name_domains": [
+                    "media_player"
+                ]
+            },
+            "area": {
+                "context_area": false,
+                "name_domains": []
+            }
         },
         "HassMediaPrevious": {
-            "": [],
-            "name": [
-                "media_player"
-            ],
-            "area": []
+            "": {
+                "context_area": true,
+                "name_domains": []
+            },
+            "name": {
+                "context_area": false,
+                "name_domains": [
+                    "media_player"
+                ]
+            },
+            "area": {
+                "context_area": false,
+                "name_domains": []
+            }
         },
         "HassSetVolume": {
-            "volume_level": [],
-            "name volume_level": [
-                "media_player"
-            ],
-            "area volume_level": []
+            "volume_level": {
+                "context_area": true,
+                "name_domains": []
+            },
+            "name volume_level": {
+                "context_area": false,
+                "name_domains": [
+                    "media_player"
+                ]
+            },
+            "area volume_level": {
+                "context_area": false,
+                "name_domains": []
+            }
         },
         "HassMediaPlayerMute": {
-            "": [],
-            "name": [
-                "media_player"
-            ]
+            "": {
+                "context_area": true,
+                "name_domains": []
+            },
+            "name": {
+                "context_area": false,
+                "name_domains": [
+                    "media_player"
+                ]
+            }
         },
         "HassMediaPlayerUnmute": {
-            "": [],
-            "name": [
-                "media_player"
-            ]
+            "": {
+                "context_area": true,
+                "name_domains": []
+            },
+            "name": {
+                "context_area": false,
+                "name_domains": [
+                    "media_player"
+                ]
+            }
         },
         "HassSetVolumeRelative": {
-            "volume_step": [],
-            "name volume_step": [
-                "media_player"
-            ],
-            "area volume_step": []
+            "volume_step": {
+                "context_area": true,
+                "name_domains": []
+            },
+            "name volume_step": {
+                "context_area": false,
+                "name_domains": [
+                    "media_player"
+                ]
+            },
+            "area volume_step": {
+                "context_area": false,
+                "name_domains": []
+            }
         },
         "HassTimerStatus": {
-            "": [],
-            "area": [],
-            "start_hours": [],
-            "start_minutes": [],
-            "start_seconds": []
+            "": {
+                "context_area": false,
+                "name_domains": []
+            },
+            "area": {
+                "context_area": false,
+                "name_domains": []
+            },
+            "start_hours": {
+                "context_area": false,
+                "name_domains": []
+            },
+            "start_minutes": {
+                "context_area": false,
+                "name_domains": []
+            },
+            "start_seconds": {
+                "context_area": false,
+                "name_domains": []
+            }
         },
         "HassFanSetSpeed": {
-            "percentage": [],
-            "name percentage": [
-                "fan"
-            ],
-            "area percentage": [],
-            "floor percentage": []
+            "percentage": {
+                "context_area": true,
+                "name_domains": []
+            },
+            "name percentage": {
+                "context_area": false,
+                "name_domains": [
+                    "fan"
+                ]
+            },
+            "area percentage": {
+                "context_area": false,
+                "name_domains": []
+            },
+            "floor percentage": {
+                "context_area": false,
+                "name_domains": []
+            }
         },
         "HassLawnMowerStartMowing": {
-            "": [],
-            "name": [
-                "lawn_mower"
-            ]
+            "": {
+                "context_area": false,
+                "name_domains": []
+            },
+            "name": {
+                "context_area": false,
+                "name_domains": [
+                    "lawn_mower"
+                ]
+            }
         },
         "HassLawnMowerDock": {
-            "": [],
-            "name": [
-                "lawn_mower"
-            ]
+            "": {
+                "context_area": false,
+                "name_domains": []
+            },
+            "name": {
+                "context_area": false,
+                "name_domains": [
+                    "lawn_mower"
+                ]
+            }
         }
     },
     "slot_list_names": {
