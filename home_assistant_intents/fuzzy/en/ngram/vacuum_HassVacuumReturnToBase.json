@@ -3,15 +3,16 @@
     "words": {
         "<eps>": 0,
         "<unk>": 1,
-        "<skip>": 2,
-        "return": 3,
-        "the": 4,
-        "my": 5,
-        "our": 6,
-        "{name}": 7,
-        "to": 8,
-        "base": 9,
-        "<s>": 10,
-        "</s>": 11
+        "intent:HassVacuumReturnToBase": 2,
+        "<skip>": 3,
+        "return": 4,
+        "the": 5,
+        "my": 6,
+        "our": 7,
+        "{name}": 8,
+        "to": 9,
+        "base": 10,
+        "<s>": 11,
+        "</s>": 12
     }
 }

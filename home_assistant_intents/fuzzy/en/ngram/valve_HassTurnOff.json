@@ -3,17 +3,18 @@
     "words": {
         "<eps>": 0,
         "<unk>": 1,
-        "<skip>": 2,
-        "close": 3,
-        "shut": 4,
-        "lower": 5,
-        "up": 6,
-        "down": 7,
-        "the": 8,
-        "my": 9,
-        "our": 10,
-        "{name}": 11,
-        "<s>": 12,
-        "</s>": 13
+        "intent:HassTurnOff": 2,
+        "<skip>": 3,
+        "close": 4,
+        "shut": 5,
+        "lower": 6,
+        "up": 7,
+        "down": 8,
+        "the": 9,
+        "my": 10,
+        "our": 11,
+        "{name}": 12,
+        "<s>": 13,
+        "</s>": 14
     }
 }

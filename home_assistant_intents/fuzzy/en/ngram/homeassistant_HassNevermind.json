@@ -3,11 +3,12 @@
     "words": {
         "<eps>": 0,
         "<unk>": 1,
-        "<skip>": 2,
-        "nevermind": 3,
-        "never": 4,
-        "mind": 5,
-        "<s>": 6,
-        "</s>": 7
+        "intent:HassNevermind": 2,
+        "<skip>": 3,
+        "nevermind": 4,
+        "never": 5,
+        "mind": 6,
+        "<s>": 7,
+        "</s>": 8
     }
 }

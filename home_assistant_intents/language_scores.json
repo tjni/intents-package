@@ -12,7 +12,7 @@
   "bg-BG": {
     "cloud": 3,
     "focused_local": 0,
-    "full_local": 0
+    "full_local": 3
   },
   "bn-BD": {
     "cloud": 0,
@@ -31,13 +31,13 @@
   },
   "cs-CZ": {
     "cloud": 3,
-    "focused_local": 0,
-    "full_local": 0
+    "focused_local": 2,
+    "full_local": 3
   },
   "da-DK": {
     "cloud": 3,
     "focused_local": 0,
-    "full_local": 0
+    "full_local": 3
   },
   "de-DE": {
     "cloud": 3,
@@ -97,7 +97,7 @@
   "fr-FR": {
     "cloud": 3,
     "focused_local": 2,
-    "full_local": 0
+    "full_local": 3
   },
   "ga-IE": {
     "cloud": 3,
@@ -211,18 +211,18 @@
   },
   "nl-BE": {
     "cloud": 3,
-    "focused_local": 0,
-    "full_local": 0
+    "focused_local": 2,
+    "full_local": 3
   },
   "nl-NL": {
     "cloud": 3,
     "focused_local": 2,
-    "full_local": 0
+    "full_local": 3
   },
   "pl-PL": {
     "cloud": 3,
     "focused_local": 0,
-    "full_local": 0
+    "full_local": 3
   },
   "pt-PT": {
     "cloud": 3,
@@ -242,12 +242,12 @@
   "ru-RU": {
     "cloud": 3,
     "focused_local": 0,
-    "full_local": 0
+    "full_local": 3
   },
   "sk-SK": {
     "cloud": 3,
     "focused_local": 0,
-    "full_local": 0
+    "full_local": 3
   },
   "sl-SI": {
     "cloud": 3,
@@ -287,7 +287,7 @@
   "uk-UA": {
     "cloud": 3,
     "focused_local": 0,
-    "full_local": 0
+    "full_local": 3
   },
   "ur-IN": {
     "cloud": 0,
