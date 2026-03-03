@@ -46,6 +46,10 @@ SKIP_INTENTS = [
     "HassDecreaseTimer",
     "HassPauseTimer",
     "HassUnpauseTimer",
+    "HassLawnMowerStartMowing",
+    "HassLawnMowerDock",
+    "HassVacuumStart",
+    "HassVacuumReturnToBase",
 ]
 NAME_SKIP_INTENTS = (
     "HassStartTimer",

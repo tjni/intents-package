@@ -267,34 +267,6 @@
                 ]
             }
         },
-        "HassVacuumStart": {
-            "name": {
-                "context_area": false,
-                "name_domains": [
-                    "vacuum"
-                ]
-            },
-            "area": {
-                "context_area": false,
-                "name_domains": []
-            },
-            "floor": {
-                "context_area": false,
-                "name_domains": []
-            }
-        },
-        "HassVacuumReturnToBase": {
-            "name": {
-                "context_area": false,
-                "name_domains": [
-                    "vacuum"
-                ]
-            },
-            "area": {
-                "context_area": false,
-                "name_domains": []
-            }
-        },
         "HassMediaPause": {
             "": {
                 "context_area": true,
@@ -455,30 +427,6 @@
             "floor percentage": {
                 "context_area": false,
                 "name_domains": []
-            }
-        },
-        "HassLawnMowerStartMowing": {
-            "": {
-                "context_area": false,
-                "name_domains": []
-            },
-            "name": {
-                "context_area": false,
-                "name_domains": [
-                    "lawn_mower"
-                ]
-            }
-        },
-        "HassLawnMowerDock": {
-            "": {
-                "context_area": false,
-                "name_domains": []
-            },
-            "name": {
-                "context_area": false,
-                "name_domains": [
-                    "lawn_mower"
-                ]
             }
         }
     },

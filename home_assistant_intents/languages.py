@@ -36,6 +36,7 @@ LANGUAGES = [
     "nb",
     "ne",
     "nl",
+    "pa",
     "pl",
     "pt",
     "pt-BR",
