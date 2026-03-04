@@ -1,3 +1,4 @@
 include LICENSE.md
 recursive-include home_assistant_intents/data *.json
 recursive-include home_assistant_intents/fuzzy *.json *.db
+include home_assistant_intents/py.typed
