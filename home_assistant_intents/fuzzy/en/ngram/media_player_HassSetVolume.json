@@ -1,0 +1,32 @@
+{
+    "order": 4,
+    "words": {
+        "<eps>": 0,
+        "<unk>": 1,
+        "intent:HassSetVolume": 2,
+        "<skip>": 3,
+        "set": 4,
+        "change": 5,
+        "turn": 6,
+        "increase": 7,
+        "decrease": 8,
+        "make": 9,
+        "the": 10,
+        "my": 11,
+        "our": 12,
+        "{name}": 13,
+        "volume": 14,
+        "to": 15,
+        "{volume_level}": 16,
+        "{volume_level}%": 17,
+        "%": 18,
+        "percent": 19,
+        "up": 20,
+        "down": 21,
+        "on": 22,
+        "{area}": 23,
+        "in": 24,
+        "<s>": 25,
+        "</s>": 26
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "order": 4,
+    "words": {
+        "<eps>": 0,
+        "<unk>": 1,
+        "intent:HassVacuumCleanArea": 2,
+        "<skip>": 3,
+        "vacuum": 4,
+        "clean": 5,
+        "the": 6,
+        "my": 7,
+        "our": 8,
+        "{area}": 9,
+        "in": 10,
+        "here": 11,
+        "this": 12,
+        "room": 13,
+        "area": 14,
+        "space": 15,
+        "with": 16,
+        "{name}": 17,
+        "start": 18,
+        "<s>": 19,
+        "</s>": 20
+    }
+}

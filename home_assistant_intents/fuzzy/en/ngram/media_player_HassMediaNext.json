@@ -1,0 +1,26 @@
+{
+    "order": 4,
+    "words": {
+        "<eps>": 0,
+        "<unk>": 1,
+        "intent:HassMediaNext": 2,
+        "<skip>": 3,
+        "next": 4,
+        "track": 5,
+        "item": 6,
+        "on": 7,
+        "for": 8,
+        "the": 9,
+        "my": 10,
+        "our": 11,
+        "{name}": 12,
+        "skip": 13,
+        "to": 14,
+        "this": 15,
+        "song": 16,
+        "in": 17,
+        "{area}": 18,
+        "<s>": 19,
+        "</s>": 20
+    }
+}

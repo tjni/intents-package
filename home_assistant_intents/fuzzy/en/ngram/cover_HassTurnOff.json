@@ -1,0 +1,26 @@
+{
+    "order": 4,
+    "words": {
+        "<eps>": 0,
+        "<unk>": 1,
+        "intent:HassTurnOff": 2,
+        "<skip>": 3,
+        "close": 4,
+        "shut": 5,
+        "lower": 6,
+        "up": 7,
+        "down": 8,
+        "the": 9,
+        "my": 10,
+        "our": 11,
+        "{name}": 12,
+        "in": 13,
+        "{area}": 14,
+        "garage": 15,
+        "door": 16,
+        "{device_class}": 17,
+        "here": 18,
+        "<s>": 19,
+        "</s>": 20
+    }
+}

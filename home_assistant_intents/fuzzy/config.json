@@ -97,8 +97,8 @@
                     "light",
                     "lock",
                     "media_player",
-                    "optional",
-                    "switch"
+                    "switch",
+                    "valve"
                 ]
             },
             "floor name": {
@@ -162,6 +162,12 @@
                     "light"
                 ]
             },
+            "name temperature": {
+                "context_area": false,
+                "name_domains": [
+                    "light"
+                ]
+            },
             "brightness": {
                 "context_area": true,
                 "name_domains": []
@@ -183,6 +189,18 @@
                 "name_domains": []
             },
             "color floor": {
+                "context_area": false,
+                "name_domains": []
+            },
+            "temperature": {
+                "context_area": true,
+                "name_domains": []
+            },
+            "area temperature": {
+                "context_area": false,
+                "name_domains": []
+            },
+            "floor temperature": {
                 "context_area": false,
                 "name_domains": []
             }
@@ -264,6 +282,26 @@
                 "context_area": false,
                 "name_domains": [
                     "name"
+                ]
+            }
+        },
+        "HassListRemoveItem": {
+            "item name": {
+                "context_area": false,
+                "name_domains": [
+                    "name"
+                ]
+            }
+        },
+        "HassVacuumCleanArea": {
+            "area": {
+                "context_area": false,
+                "name_domains": []
+            },
+            "area name": {
+                "context_area": false,
+                "name_domains": [
+                    "vacuum"
                 ]
             }
         },
@@ -461,11 +499,17 @@
         "color": [
             "color"
         ],
-        "fan_speed": [
-            "percentage"
+        "color_temperature": [
+            "temperature"
+        ],
+        "color_temperature_names": [
+            "temperature"
         ],
         "todo_list_item": [
             "item"
+        ],
+        "fan_speed": [
+            "percentage"
         ],
         "volume": [
             "volume_level"

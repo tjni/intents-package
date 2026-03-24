@@ -1,0 +1,14 @@
+{
+    "order": 4,
+    "words": {
+        "<eps>": 0,
+        "<unk>": 1,
+        "intent:HassNevermind": 2,
+        "<skip>": 3,
+        "nevermind": 4,
+        "never": 5,
+        "mind": 6,
+        "<s>": 7,
+        "</s>": 8
+    }
+}

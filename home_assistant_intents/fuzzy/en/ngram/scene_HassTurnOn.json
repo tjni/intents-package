@@ -1,0 +1,31 @@
+{
+    "order": 4,
+    "words": {
+        "<eps>": 0,
+        "<unk>": 1,
+        "intent:HassTurnOn": 2,
+        "<skip>": 3,
+        "activate": 4,
+        "the": 5,
+        "my": 6,
+        "our": 7,
+        "{name}": 8,
+        "scene": 9,
+        "on": 10,
+        "turn": 11,
+        "switch": 12,
+        "change": 13,
+        "bring": 14,
+        "transition": 15,
+        "to": 16,
+        "{area}": 17,
+        "in": 18,
+        "at": 19,
+        "of": 20,
+        "across": 21,
+        "around": 22,
+        "throughout": 23,
+        "<s>": 24,
+        "</s>": 25
+    }
+}

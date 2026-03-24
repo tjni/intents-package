@@ -1,0 +1,30 @@
+{
+    "order": 4,
+    "words": {
+        "<eps>": 0,
+        "<unk>": 1,
+        "intent:HassMediaPrevious": 2,
+        "<skip>": 3,
+        "previous": 4,
+        "track": 5,
+        "item": 6,
+        "on": 7,
+        "for": 8,
+        "the": 9,
+        "my": 10,
+        "our": 11,
+        "{name}": 12,
+        "go": 13,
+        "back": 14,
+        "to": 15,
+        "last": 16,
+        "song": 17,
+        "replay": 18,
+        "play": 19,
+        "again": 20,
+        "in": 21,
+        "{area}": 22,
+        "<s>": 23,
+        "</s>": 24
+    }
+}

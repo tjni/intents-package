@@ -1,0 +1,26 @@
+{
+    "order": 4,
+    "words": {
+        "<eps>": 0,
+        "<unk>": 1,
+        "intent:HassMediaUnpause": 2,
+        "<skip>": 3,
+        "unpause": 4,
+        "resume": 5,
+        "the": 6,
+        "my": 7,
+        "our": 8,
+        "{name}": 9,
+        "music": 10,
+        "tv": 11,
+        "media": 12,
+        "in": 13,
+        "{area}": 14,
+        "shows": 15,
+        "show": 16,
+        "players": 17,
+        "player": 18,
+        "<s>": 19,
+        "</s>": 20
+    }
+}

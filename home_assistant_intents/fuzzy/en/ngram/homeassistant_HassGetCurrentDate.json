@@ -1,0 +1,23 @@
+{
+    "order": 4,
+    "words": {
+        "<eps>": 0,
+        "<unk>": 1,
+        "intent:HassGetCurrentDate": 2,
+        "<skip>": 3,
+        "what's": 4,
+        "whats": 5,
+        "what": 6,
+        "tell": 7,
+        "todays": 8,
+        "today's": 9,
+        "the": 10,
+        "date": 11,
+        "current": 12,
+        "is": 13,
+        "me": 14,
+        "today": 15,
+        "<s>": 16,
+        "</s>": 17
+    }
+}

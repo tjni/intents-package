@@ -1,0 +1,26 @@
+{
+    "order": 4,
+    "words": {
+        "<eps>": 0,
+        "<unk>": 1,
+        "intent:HassTurnOn": 2,
+        "<skip>": 3,
+        "turn": 4,
+        "switch": 5,
+        "change": 6,
+        "bring": 7,
+        "on": 8,
+        "all": 9,
+        "the": 10,
+        "fans": 11,
+        "fan": 12,
+        "in": 13,
+        "my": 14,
+        "our": 15,
+        "{area}": 16,
+        "activate": 17,
+        "here": 18,
+        "<s>": 19,
+        "</s>": 20
+    }
+}

@@ -1,0 +1,30 @@
+{
+    "order": 4,
+    "words": {
+        "<eps>": 0,
+        "<unk>": 1,
+        "intent:HassTurnOn": 2,
+        "<skip>": 3,
+        "lock": 4,
+        "the": 5,
+        "my": 6,
+        "our": 7,
+        "{name}": 8,
+        "in": 9,
+        "{area}": 10,
+        "all": 11,
+        "locks": 12,
+        "doors": 13,
+        "door": 14,
+        "windows": 15,
+        "window": 16,
+        "gates": 17,
+        "gate": 18,
+        "garage": 19,
+        "shutters": 20,
+        "shutter": 21,
+        "of": 22,
+        "<s>": 23,
+        "</s>": 24
+    }
+}

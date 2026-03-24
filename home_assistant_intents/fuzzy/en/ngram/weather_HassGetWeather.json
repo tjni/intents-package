@@ -1,0 +1,26 @@
+{
+    "order": 4,
+    "words": {
+        "<eps>": 0,
+        "<unk>": 1,
+        "intent:HassGetWeather": 2,
+        "<skip>": 3,
+        "what's": 4,
+        "whats": 5,
+        "what": 6,
+        "tell": 7,
+        "the": 8,
+        "weather": 9,
+        "like": 10,
+        "is": 11,
+        "me": 12,
+        "for": 13,
+        "in": 14,
+        "at": 15,
+        "my": 16,
+        "our": 17,
+        "{name}": 18,
+        "<s>": 19,
+        "</s>": 20
+    }
+}
