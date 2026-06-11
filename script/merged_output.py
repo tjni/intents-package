@@ -16,6 +16,77 @@ INTENTS_DIR = ROOT / "intents"
 IMPORTANT_INTENTS = {"HassTurnOn", "HassTurnOff"}
 
 
+def convert_slot_combination_group(
+    group: dict, combo_name: str, combo_info: dict
+) -> dict:
+    """Convert a single new-format data group into the old hassil data format.
+
+    The new slot-combination format keeps domain information in ``name_domains``
+    / ``inferred_domain`` and relies on ``intents.yaml`` for ``context_area``.
+    The old format expects this to be expressed through ``slots`` and
+    ``requires_context`` instead. This mirrors the conversion done in
+    ``intents/tests/test_slot_combinations.py``.
+    """
+    slots = dict(group.get("slots", {}))
+    requires_context = dict(group.get("requires_context", {}))
+    metadata = dict(group.get("metadata", {}))
+
+    name_domains = group.get("name_domains")
+    inferred_domain = group.get("inferred_domain")
+    if name_domains:
+        # {name} is restricted to entities with one of these domains
+        requires_context["domain"] = name_domains
+    elif inferred_domain:
+        # Domain is inferred from the words in the sentence
+        slots["domain"] = inferred_domain
+
+    if combo_info.get("context_area"):
+        # Area comes from the voice satellite's context
+        requires_context["area"] = {"slot": True}
+
+    # Record the slot combination so consumers (and tests) can identify it
+    metadata["slot_combination"] = combo_name
+
+    entry: dict = {"sentences": list(group["sentences"]), "metadata": metadata}
+    if slots:
+        entry["slots"] = slots
+    if requires_context:
+        entry["requires_context"] = requires_context
+    if "response" in group:
+        entry["response"] = group["response"]
+
+    return entry
+
+
+def convert_slot_combinations(lang_dir: Path, intent_info: dict) -> dict:
+    """Convert new-format slot-combination dirs into old-format intent data.
+
+    Returns a mapping of intent name -> {"data": [...]} for every intent that
+    has a ``sentences/<language>/<intent>/`` directory.
+    """
+    converted: dict = {}
+    for intent_dir in sorted(p for p in lang_dir.iterdir() if p.is_dir()):
+        intent_name = intent_dir.name
+        combos = intent_info.get(intent_name, {}).get("slot_combinations", {})
+
+        data = []
+        for combo_file in sorted(intent_dir.glob("*.yaml")):
+            combo_name = combo_file.stem
+            combo_info = combos.get(combo_name, {})
+            combo_dict = yaml.safe_load(combo_file.read_text())
+            for group in combo_dict.get("data", []):
+                if not group.get("sentences"):
+                    continue
+                data.append(
+                    convert_slot_combination_group(group, combo_name, combo_info)
+                )
+
+        if data:
+            converted[intent_name] = {"data": data}
+
+    return converted
+
+
 def merge_dict(base_dict, new_dict):
     """Merges new_dict into base_dict."""
     for key, value in new_dict.items():
@@ -53,6 +124,8 @@ def main() -> None:
     intents_dir = Path(args.intents_dir)
     sentence_dir = intents_dir / "sentences"
     response_dir = intents_dir / "responses"
+    lists_dir = intents_dir / "lists"
+    rules_dir = intents_dir / "rules"
     intents_file = intents_dir / "intents.yaml"
     languages = sorted(p.name for p in sentence_dir.iterdir() if p.is_dir())
 
@@ -73,6 +146,43 @@ def main() -> None:
         merged_sentences: dict = {}
         for sentence_file in (sentence_dir / language).glob("*.yaml"):
             merge_dict(merged_sentences, yaml.safe_load(sentence_file.read_text()))
+
+        # Convert new-format slot-combination sentences into the old format.
+        # These live in sentences/<language>/<intent>/<slot_combination>.yaml
+        # instead of a single sentences/<language>/<...>.yaml file.
+        #
+        # Migrating an intent means deleting its old-format file(s) and adding a
+        # new-format directory. While both exist (a partially-migrated language)
+        # the old-format files remain authoritative, so the new directory only
+        # takes effect for an intent once its old-format data is gone.
+        converted_intents = convert_slot_combinations(
+            sentence_dir / language, intent_info
+        )
+        lang_intent_data = merged_sentences.setdefault("intents", {})
+        activated_new_format = False
+        for intent_name, intent_dict in converted_intents.items():
+            if intent_name in lang_intent_data:
+                # Not yet migrated: old-format file(s) still present
+                continue
+            lang_intent_data[intent_name] = intent_dict
+            activated_new_format = True
+
+        if activated_new_format:
+            # Migrated intents keep their lists and expansion rules in the
+            # dedicated lists/ and rules/ directories instead of _common.yaml.
+            # These are authoritative for the new sentences, so they take
+            # precedence over anything merged from _common.yaml.
+            merged_lists = merged_sentences.setdefault("lists", {})
+            for list_file in sorted(lists_dir.glob("*.yaml")):  # shared lists
+                merged_lists.update(yaml.safe_load(list_file.read_text())["lists"])
+            for list_file in sorted((lists_dir / language).glob("*.yaml")):
+                merged_lists.update(yaml.safe_load(list_file.read_text())["lists"])
+
+            merged_rules = merged_sentences.setdefault("expansion_rules", {})
+            for rule_file in sorted((rules_dir / language).glob("*.yaml")):
+                merged_rules.update(
+                    yaml.safe_load(rule_file.read_text())["expansion_rules"]
+                )
 
         # Merge language's response YAML files
         merged_responses: dict = {}

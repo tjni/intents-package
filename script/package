@@ -39,7 +39,11 @@ trap 'rm -rf "${test_dir}"' EXIT
 
 python3 -m venv "${test_dir}"
 test_python3="${test_dir}/bin/python3"
-"${test_python3}" -m pip install pytest "${latest_wheel}"
+"${test_python3}" -m pip install \
+    'pytest>=8,<9' \
+    'pyyaml>=6,<7' \
+    'hassil>=3,<4' \
+    "${latest_wheel}"
 "${test_python3}" -m pytest -vv "${base_dir}/tests/test_intents.py"
 
 echo "See: ${base_dir}/dist"
