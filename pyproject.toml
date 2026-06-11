@@ -35,6 +35,7 @@ dev = [
     "pytest==8.4.1",
     "PyYAML==6.0.2",
     "types-PyYAML==6.0.12.20250822",
+    "hassil==3.7.1",
 ]
 
 [project.urls]
