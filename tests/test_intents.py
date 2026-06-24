@@ -153,15 +153,28 @@ def test_slot_combination_examples(language: str, intent: str, combo: str) -> No
                 assert slot_name in actual_slots, f"Missing slot {slot_name}: {error}"
                 actual_value = actual_slots[slot_name]
 
-                # Some slots (e.g. an inferred domain) may match several values.
+                # Some slots may match several values (e.g. an inferred domain),
+                # and an example group may accept several values when different
+                # sentences in the group resolve the slot differently (e.g. a
+                # conversation_command captured with different casing).
                 if isinstance(actual_value, (list, set)):
-                    assert (
-                        expected_value in actual_value
-                    ), f"Slot {slot_name} missing {expected_value!r}: {error}"
+                    if isinstance(expected_value, (list, set)):
+                        assert set(actual_value).issubset(
+                            expected_value
+                        ), f"Slot {slot_name} = {actual_value!r} not a subset of {expected_value!r}: {error}"
+                    else:
+                        assert (
+                            expected_value in actual_value
+                        ), f"Slot {slot_name} missing {expected_value!r}: {error}"
                 else:
-                    assert (
-                        actual_value == expected_value
-                    ), f"Slot {slot_name} = {actual_value!r}, expected {expected_value!r}: {error}"
+                    if isinstance(expected_value, (list, set)):
+                        assert (
+                            actual_value in expected_value
+                        ), f"Slot {slot_name} = {actual_value!r}, expected one of {expected_value!r}: {error}"
+                    else:
+                        assert (
+                            actual_value == expected_value
+                        ), f"Slot {slot_name} = {actual_value!r}, expected {expected_value!r}: {error}"
 
 
 # TODO: Need to add support for kw and sr-Latn
