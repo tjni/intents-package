@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+set -eo pipefail
+
+# Point the `intents` submodule at the given tag and commit the pointer change.
+#
+# Usage: script/bump-intents <tag>      # e.g. script/bump-intents 2026.6.24
+#
+# Safe to run when the submodule is already at <tag>: it simply reports that
+# there is nothing to commit. The commit is made locally only; pushing is left
+# to the caller (the release workflow pushes it after a successful build).
+
+tag="${1:?Usage: script/bump-intents <tag>}"
+
+# Directory of *this* script
+this_dir="$( cd "$( dirname "$0" )" && pwd )"
+
+# Base directory of repo
+base_dir="$(realpath "${this_dir}/..")"
+
+cd "${base_dir}"
+
+git -C intents fetch --tags --force origin
+git -C intents checkout "refs/tags/${tag}"
+
+if git diff --quiet -- intents; then
+    echo "intents submodule already at ${tag}; nothing to commit"
+else
+    git add intents
+    git commit -m "Bump intents submodule to ${tag}"
+    echo "Committed bump of intents submodule to ${tag}"
+fi
