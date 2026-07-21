@@ -26,6 +26,10 @@ def convert_slot_combination_group(
     The old format expects this to be expressed through ``slots`` and
     ``requires_context`` instead. This mirrors the conversion done in
     ``intents/tests/test_slot_combinations.py``.
+
+    ``name_domains`` may be a string naming a reusable set defined in
+    ``intents.yaml`` (``name_domain_groups``); it is resolved to a concrete
+    list of domains here so the exported JSON only ever contains lists.
     """
     slots = dict(group.get("slots", {}))
     requires_context = dict(group.get("requires_context", {}))
@@ -34,6 +38,9 @@ def convert_slot_combination_group(
     name_domains = group.get("name_domains")
     inferred_domain = group.get("inferred_domain")
     if name_domains:
+        if isinstance(name_domains, str):
+            # Named group defined in intents.yaml (name_domain_groups)
+            name_domains = combo_info["name_domain_groups"][name_domains]
         # {name} is restricted to entities with one of these domains
         requires_context["domain"] = name_domains
     elif inferred_domain:
