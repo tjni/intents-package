@@ -1185,14 +1185,18 @@
     "añadir": "(añad(a|e|ir|í)|apunt[a|e|ar|á]|pon[ga|er|é]|sum(e|a|ar|á)|agreg(a|ue|ar|á))",
     "apaga": "(apag(a|ue|ar|á)|desconect(a|e|ar|á)|desactiv(a|e|ar|á))",
     "area": "[[en|de] [el|la]|del] {area}",
+    "aspiradora": "([el ]aspirador|[los ]aspiradores|[la ]aspiradora|[las ]aspiradoras)",
     "baja": "(baj(a|e|ar|á)|redu(ce|zca|cir|cí)|decrement(a|e|ar|á)|disminu(ye|ya|ir|í)|acort(a|e|ar|á))",
     "porciento": "(%|por[ ]cien[to])",
     "cancela": "cancel(a[r]|á|e|ación)",
     "cambia": "(cambi(a[r]|á|e|o)|(muev[a|e]|mov[er|é]))",
     "cierra": "(cierr(a|e)|cerr(ar|á)|<baja>)",
+    "completa": "(complet(a|e|ar|á)|finaliz(a|ar|á)|finalice|termin(a|e|ar|á))",
+    "completado": "(completad(o|a)[s]|hech(o|a)[s]|realizad(o|a)[s])",
     "continúa": "(contin(úa|úe|uar|uá)|(sig(ue|a)|segu(ir|í))|(reactiv(a|e|ar|á))|reanud(a|e|ar|á))",
     "crea": "(cre(a|e|ar|á))",
     "cual_es": "(cu(a|á)l es [el |la ]|cu(a|á)les son [los |las ]|c(o|ó)mo (va|está|marcha|se encuentra)[n] [el |la |los |las ])",
+    "da_por_completado": "((d(a|á|ar)|dé) por <completado>)",
     "de_aqui": "[(de|en)] (aquí|acá|(el|la) <habitación>)",
     "dime": "(sab(es|é)|dime|dec(ir|í|id)[me]|ind(i|í)(ca|que|car|cá)[me])",
     "dime_si": "<dime> si",
@@ -1207,7 +1211,9 @@
     "establece_sube_baja": "(<establece>|<enciende>|<sube>|<baja>)",
     "floor": "[([en|de] [el|la]|del)] ([planta|piso] {floor}|{floor} [planta|piso])",
     "inicia": "(inici(a|e|ar|á)|com[i]en(za|ce|zar|zá)|emp[i]e(za|ce|zar|zá))",
+    "lista_nombre": "((de|en) [[mi] lista[do]|[la] lista|lista[do]] [de|del|de la[s]|de los] {name}|(del|en [el]) listado [de|del|de la[s]|de los] {name}|(de|en) {name})",
     "luces": "[el|la|los|las] (luz|luces|lámpara[s]|bombill(a|o)[s]|ampolleta[s]|luminaria[s]|lamparilla[s]|foco[s]|interruptor[es]|llave[s][ de la luz])",
+    "marca": "(marc(a|ar|á)|marque)",
     "otra_vez": "(otra vez|de nuevo|una vez más)",
     "pausa": "(paus(a|ar|e|á)|<para>)",
     "para": "(par(a|ar|e|á))|det(én|ener|enga|ené)",
@@ -1218,6 +1224,8 @@
     "salta": "(salt(a|e|ar|á))",
     "se_encuentra": "(se (encuentra|localiza|ubica)|está|mora)",
     "sube": "(sub(a|e|ir|í)|levant(a|e|ar|á)|aument(a|e|ar|á)|increment(a|e|ar|á))",
+    "suprime": "(suprim(a|e|ir|í)|retir(a|e|ar|á)|rem(ueve|ueva|over|ové))",
+    "tacha": "tach(a|e|ar|á)",
     "vol": "[el|la] (volumen|música)",
     "vuelve": "((vuelve|vuelva|volver|volvé)|(regres(a|e|ar|á))|(retorn(a|e|ar|á))|(retroced(e|a|er|é)))",
     "habitación": "(habitaci(ón|ones)|pieza[s]|cuarto[s]|aposento[s]|sala[s]|[re]cámara[s])",
@@ -1296,7 +1304,8 @@
       "duplicate_entities_in_floor": "Lo siento, hay varios dispositivos denominados {{ entity }} en la planta {{ floor }}",
       "timer_not_found": "Lo siento, no se pudo encontrar ese temporizador",
       "multiple_timers_matched": "Lo siento, no se puede realizar la acción en varios temporizadores",
-      "no_timer_support": "Lo siento, este dispositivo no es compatible con temporizadores"
+      "no_timer_support": "Lo siento, este dispositivo no es compatible con temporizadores",
+      "duplicate_targets": "Lo siento, más de un dispositivo coincide con tu solicitud"
     },
     "intents": {
       "HassGetState": {
@@ -1422,7 +1431,7 @@
         "default": "Velocidad establecida"
       },
       "HassListCompleteItem": {
-        "item_completed": "Se eliminó {{ slots.item }}"
+        "item_completed": "Se completó {{ slots.item }}"
       },
       "HassDecreaseTimer": {
         "default": "Temporizador actualizado"
@@ -1435,6 +1444,9 @@
       },
       "HassVacuumReturnToBase": {
         "default": "Regresando"
+      },
+      "HassListRemoveItem": {
+        "item_deleted": "Se eliminó {{ slots.item }}"
       },
       "HassRespond": {
         "hello": "Saludos desde Home Assistant.",

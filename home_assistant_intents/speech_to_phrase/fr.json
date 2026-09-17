@@ -1263,7 +1263,8 @@
       "duplicate_entities_in_floor": "Désolé, plusieurs appareils de cet étage sont nommés {{entity}}",
       "timer_not_found": "Désolé, je n'ai pas trouvé ce minuteur",
       "multiple_timers_matched": "Désolé, je ne peux pas cibler plusieurs minuteurs",
-      "no_timer_support": "Désolé, cet appareil ne supporte pas les fonctions lié aux minuteurs"
+      "no_timer_support": "Désolé, cet appareil ne supporte pas les fonctions lié aux minuteurs",
+      "duplicate_targets": "Désolé, plusieurs appareils correspondent à votre demande"
     },
     "intents": {
       "HassGetState": {

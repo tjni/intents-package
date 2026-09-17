@@ -1,0 +1,976 @@
+{
+  "language": "ml",
+  "intents": {
+    "HassDecreaseTimer": {
+      "data": [
+        {
+          "sentences": [
+            "<timer_locative> <ablative_from> <duration_hours> <timer_decrease>",
+            "<duration_hours> <timer_locative> <ablative_from> <timer_decrease>",
+            "<timer_singular> <duration_hours> <timer_decrease>"
+          ],
+          "metadata": {
+            "slot_combination": "hours_only"
+          },
+          "response": "default"
+        },
+        {
+          "sentences": [
+            "<timer_locative> <ablative_from> <duration_minutes> <timer_decrease>",
+            "<duration_minutes> <timer_locative> <ablative_from> <timer_decrease>",
+            "<timer_singular> <duration_minutes> <timer_decrease>"
+          ],
+          "metadata": {
+            "slot_combination": "minutes_only"
+          },
+          "response": "default"
+        },
+        {
+          "sentences": [
+            "<timer_locative> <ablative_from> <duration_seconds> <timer_decrease>",
+            "<duration_seconds> <timer_locative> <ablative_from> <timer_decrease>",
+            "<timer_singular> <duration_seconds> <timer_decrease>"
+          ],
+          "metadata": {
+            "slot_combination": "seconds_only"
+          },
+          "response": "default"
+        }
+      ]
+    },
+    "HassIncreaseTimer": {
+      "data": [
+        {
+          "sentences": [
+            "<timer_dative_singular> <duration_hours> <timer_increase>",
+            "<duration_hours> <timer_dative_singular> <timer_increase>",
+            "<timer_singular> <duration_hours> കൂടി <timer_increase>"
+          ],
+          "metadata": {
+            "slot_combination": "hours_only"
+          },
+          "response": "default"
+        },
+        {
+          "sentences": [
+            "<timer_dative_singular> <duration_minutes> <timer_increase>",
+            "<duration_minutes> <timer_dative_singular> <timer_increase>",
+            "<timer_singular> <duration_minutes> കൂടി <timer_increase>"
+          ],
+          "metadata": {
+            "slot_combination": "minutes_only"
+          },
+          "response": "default"
+        },
+        {
+          "sentences": [
+            "<timer_dative_singular> <duration_seconds> <timer_increase>",
+            "<duration_seconds> <timer_dative_singular> <timer_increase>",
+            "<timer_singular> <duration_seconds> കൂടി <timer_increase>"
+          ],
+          "metadata": {
+            "slot_combination": "seconds_only"
+          },
+          "response": "default"
+        }
+      ]
+    },
+    "HassPauseTimer": {
+      "data": [
+        {
+          "sentences": [
+            "(<timer_singular> <timer_pause>|<timer_pause> <timer_singular>)"
+          ],
+          "metadata": {
+            "slot_combination": "default"
+          },
+          "response": "default"
+        }
+      ]
+    },
+    "HassTimerStatus": {
+      "data": [
+        {
+          "sentences": [
+            "[<timer_locative>] എത്ര (സമയം|നേരം) ബാക്കിയുണ്ട്",
+            "<timer_singular> എത്ര (സമയം|നേരം) ബാക്കി",
+            "<timer_genitive_singular> <timer_status> [എന്താണ്]",
+            "<timer_singular> <timer_status>"
+          ],
+          "metadata": {
+            "slot_combination": "default"
+          },
+          "response": "default"
+        }
+      ]
+    },
+    "HassTurnOff": {
+      "data": [
+        {
+          "sentences": [
+            "{floor} നില[<in>] വിളക്കുകൾ <turn_off>"
+          ],
+          "metadata": {
+            "slot_combination": "floor_domain"
+          },
+          "slots": {
+            "domain": "light"
+          },
+          "response": "lights_floor"
+        }
+      ]
+    },
+    "HassTurnOn": {
+      "data": [
+        {
+          "sentences": [
+            "{floor} നില[<in>] വിളക്കുകൾ <turn_on>"
+          ],
+          "metadata": {
+            "slot_combination": "floor_domain"
+          },
+          "slots": {
+            "domain": "light"
+          },
+          "response": "lights_floor"
+        }
+      ]
+    },
+    "HassUnpauseTimer": {
+      "data": [
+        {
+          "sentences": [
+            "(<timer_singular> <timer_unpause>|<timer_unpause> <timer_singular>)"
+          ],
+          "metadata": {
+            "slot_combination": "default"
+          },
+          "response": "default"
+        }
+      ]
+    }
+  },
+  "lists": {
+    "message": {
+      "wildcard": true
+    },
+    "temperature": {
+      "range": {
+        "type": "temperature",
+        "from": 0,
+        "to": 100,
+        "fractions": "halves"
+      }
+    },
+    "position": {
+      "range": {
+        "type": "percentage",
+        "from": 0,
+        "to": 100
+      }
+    },
+    "fan_speed": {
+      "range": {
+        "type": "percentage",
+        "from": 0,
+        "to": 100
+      }
+    },
+    "brightness": {
+      "range": {
+        "type": "percentage",
+        "from": 0,
+        "to": 100
+      }
+    },
+    "color_temperature": {
+      "range": {
+        "from": 1000,
+        "to": 10000,
+        "step": 100
+      }
+    },
+    "search_query": {
+      "wildcard": true
+    },
+    "volume": {
+      "range": {
+        "type": "percentage",
+        "from": 0,
+        "to": 100
+      }
+    },
+    "volume_step_up": {
+      "range": {
+        "type": "percentage",
+        "from": 0,
+        "to": 100
+      }
+    },
+    "volume_step_down": {
+      "range": {
+        "type": "percentage",
+        "from": 0,
+        "to": 100,
+        "multiplier": -1
+      }
+    },
+    "zone": {
+      "wildcard": true
+    },
+    "timer_seconds": {
+      "range": {
+        "from": 1,
+        "to": 100
+      }
+    },
+    "timer_minutes": {
+      "range": {
+        "from": 1,
+        "to": 100
+      }
+    },
+    "timer_hours": {
+      "range": {
+        "from": 1,
+        "to": 100
+      }
+    },
+    "timer_name": {
+      "wildcard": true
+    },
+    "timer_command": {
+      "wildcard": true
+    },
+    "shopping_list_item": {
+      "wildcard": true
+    },
+    "todo_list_item": {
+      "wildcard": true
+    },
+    "cover_classes": {
+      "values": [
+        {
+          "in": "(ജന(ൽ|ലുകൾ))",
+          "out": "window"
+        },
+        {
+          "in": "(ബ്ലൈൻ(ഡ്|ഡുകൾ))",
+          "out": "blind"
+        },
+        {
+          "in": "(മറ[കൾ]|തിരശ്ശീല[കൾ]|തിരശീല[കൾ]|തിര[കൾ]|കർട്ട(ൻ|നുകൾ)|പട(കം|ങ്ങൾ)|ജന്നൽമറ[കൾ]|യവനിക[കൾ]|മറശ്ശീല[കൾ])",
+          "out": "curtain"
+        },
+        {
+          "in": "(ഷട്ട(ർ|റുകൾ))",
+          "out": "shutter"
+        },
+        {
+          "in": "(ഗരാജ് വാതി(ൽ|ലുകൾ)|ഗരാജ് വാതിലുകൾ)",
+          "out": "garage"
+        }
+      ]
+    },
+    "cover_classes_singular": {
+      "values": [
+        {
+          "in": "ജനൽ",
+          "out": "window"
+        },
+        {
+          "in": "ബ്ലൈൻഡ്",
+          "out": "blind"
+        },
+        {
+          "in": "(കർട്ടൺ|തിരശ്ശീല)",
+          "out": "curtain"
+        },
+        {
+          "in": "ഷട്ടർ",
+          "out": "shutter"
+        },
+        {
+          "in": "ഗരാജ് വാതിൽ",
+          "out": "garage"
+        }
+      ]
+    },
+    "cover_classes_plural": {
+      "values": [
+        {
+          "in": "ജനലുകൾ",
+          "out": "window"
+        },
+        {
+          "in": "ബ്ലൈൻഡുകൾ",
+          "out": "blind"
+        },
+        {
+          "in": "(കർട്ടനുകൾ|തിരശ്ശീലകൾ)",
+          "out": "curtain"
+        },
+        {
+          "in": "ഷട്ടറുകൾ",
+          "out": "shutter"
+        },
+        {
+          "in": "ഗരാജ് വാതിലുകൾ",
+          "out": "garage"
+        }
+      ]
+    },
+    "color_temperature_names": {
+      "values": [
+        {
+          "in": "(മെഴുകുതിരി വെളിച്ചം|മെഴുകുതിരി)",
+          "out": 1900
+        },
+        {
+          "in": "ഊഷ്മള വെള്ള",
+          "out": 2700
+        },
+        {
+          "in": "തണുത്ത വെള്ള",
+          "out": 4000
+        },
+        {
+          "in": "(പകൽ വെളിച്ചം|ഡേലൈറ്റ്)",
+          "out": 6500
+        }
+      ]
+    },
+    "color": {
+      "values": [
+        {
+          "in": "(വെ(ള്ള|ളുത്ത)|ധവള|ശ്വ്വേത)",
+          "out": "white"
+        },
+        {
+          "in": "(ക(റുപ്പ്|റുത്ത))",
+          "out": "black"
+        },
+        {
+          "in": "(ചു(വപ്പ്|വന്ന|മപ്പ്|വന്നത്)|ചെ(മപ്പ്|മപ്പു|മന്ന)|ചുമ(ന്ന|ന്നത്))",
+          "out": "red"
+        },
+        {
+          "in": "ഓറഞ്ച്",
+          "out": "orange"
+        },
+        {
+          "in": "മഞ്ഞ",
+          "out": "yellow"
+        },
+        {
+          "in": "പച്ച",
+          "out": "green"
+        },
+        {
+          "in": "നീല",
+          "out": "blue"
+        },
+        {
+          "in": "(പർപ്പിൾ|ഊത|ധൂമ്ര)",
+          "out": "purple"
+        },
+        {
+          "in": "(ത(വിട്ട്|വിട്|വിട്ടു)|ബ്രൗൺ)",
+          "out": "brown"
+        }
+      ]
+    },
+    "brightness_level": {
+      "values": [
+        {
+          "in": "(കൂടിയത്|പരമാവധി|ഉച്ചനില)",
+          "out": 100
+        },
+        {
+          "in": "(കുറ(ഞ്ഞ|ഞ്ഞത്)|ന്യൂനത(മ|മം))",
+          "out": 1
+        }
+      ]
+    },
+    "media_class": {
+      "values": [
+        {
+          "in": "(പാട്ട്|ഗാനം|ട്രാക്ക്)",
+          "out": "track"
+        },
+        {
+          "in": "ആൽബം",
+          "out": "album"
+        },
+        {
+          "in": "(പ്ലേലിസ്റ്റ്|പ്ലേ ലിസ്റ്റ്|പാട്ട്പട്ടിക|പാട്ട് പട്ടിക)",
+          "out": "playlist"
+        },
+        {
+          "in": "പോഡ്കാസ്റ്റ്",
+          "out": "podcast"
+        },
+        {
+          "in": "(സിനിമ|ചലച്ചിത്രം|പടം|ചിത്രം)",
+          "out": "movie"
+        },
+        {
+          "in": "(സീരിയൽ|ടിവി ഷോ|ടെലിവിഷൻ പരമ്പര|പരമ്പര)",
+          "out": "tv_show"
+        }
+      ]
+    },
+    "media_artist": {
+      "values": [
+        {
+          "in": "(ഗായകന്റെ|ഗായികയുടെ|ബാൻഡിന്റെ) (പാട്ടുകൾ|സംഗീതം)",
+          "out": "artist"
+        }
+      ]
+    },
+    "person_zone_questions": {
+      "values": [
+        {
+          "in": "(വീട്ടിലാണോ|വീട്ടിലുണ്ടോ)",
+          "out": "home"
+        },
+        {
+          "in": "വീടിന് പുറത്താണോ",
+          "out": "not_home"
+        }
+      ]
+    },
+    "person_zone_relative": {
+      "values": [
+        {
+          "in": "വീട്ടിലുള്ള",
+          "out": "home"
+        },
+        {
+          "in": "വീട്ടിലില്ലാത്ത",
+          "out": "not_home"
+        }
+      ]
+    },
+    "on_off_states_questions": {
+      "values": [
+        {
+          "in": "(ഓണാണോ|ഓൺ ആണോ|പ്രവർത്തിക്കുന്നുണ്ടോ)",
+          "out": "on"
+        },
+        {
+          "in": "(ഓഫാണോ|ഓഫ് ആണോ|നിർത്തിയിട്ടുണ്ടോ)",
+          "out": "off"
+        }
+      ]
+    },
+    "on_off_states_relative": {
+      "values": [
+        {
+          "in": "(ഓണായ|ഓൺ ആയ|പ്രവർത്തിക്കുന്ന)",
+          "out": "on"
+        },
+        {
+          "in": "(ഓഫായ|ഓഫ് ആയ|നിർത്തിയിട്ടുള്ള)",
+          "out": "off"
+        }
+      ]
+    },
+    "cover_states_questions": {
+      "values": [
+        {
+          "in": "(തുറന്നിട്ടുണ്ടോ|തുറന്നിരിക്കുകയാണോ)",
+          "out": "open"
+        },
+        {
+          "in": "(അടച്ചിട്ടുണ്ടോ|അടഞ്ഞിരിക്കുകയാണോ)",
+          "out": "closed"
+        },
+        {
+          "in": "തുറന്നുകൊണ്ടിരിക്കുകയാണോ",
+          "out": "opening"
+        },
+        {
+          "in": "അടഞ്ഞുകൊണ്ടിരിക്കുകയാണോ",
+          "out": "closing"
+        }
+      ]
+    },
+    "cover_states_relative": {
+      "values": [
+        {
+          "in": "(തുറന്നിട്ടുള്ള|തുറന്നിരിക്കുന്ന)",
+          "out": "open"
+        },
+        {
+          "in": "(അടച്ചിട്ടുള്ള|അടഞ്ഞിരിക്കുന്ന)",
+          "out": "closed"
+        },
+        {
+          "in": "തുറന്നുകൊണ്ടിരിക്കുന്ന",
+          "out": "opening"
+        },
+        {
+          "in": "അടഞ്ഞുകൊണ്ടിരിക്കുന്ന",
+          "out": "closing"
+        }
+      ]
+    },
+    "lock_states_questions": {
+      "values": [
+        {
+          "in": "(പൂട്ടിയിട്ടുണ്ടോ|പൂട്ടിയിരിക്കുകയാണോ)",
+          "out": "locked"
+        },
+        {
+          "in": "(പൂട്ടാതെയാണോ|പൂട്ടു തുറന്നിട്ടുണ്ടോ)",
+          "out": "unlocked"
+        }
+      ]
+    },
+    "lock_states_relative": {
+      "values": [
+        {
+          "in": "(പൂട്ടിയിട്ടുള്ള|പൂട്ടിയിരിക്കുന്ന)",
+          "out": "locked"
+        },
+        {
+          "in": "(പൂട്ടാത്ത|പൂട്ടു തുറന്നിട്ടുള്ള)",
+          "out": "unlocked"
+        }
+      ]
+    },
+    "bs_open_states_questions": {
+      "values": [
+        {
+          "in": "(തുറന്നിട്ടുണ്ടോ|തുറന്നിരിക്കുകയാണോ)",
+          "out": "on"
+        },
+        {
+          "in": "(അടച്ചിട്ടുണ്ടോ|അടഞ്ഞിരിക്കുകയാണോ)",
+          "out": "off"
+        }
+      ]
+    },
+    "bs_occupancy_states_questions": {
+      "values": [
+        {
+          "in": "സാന്നിധ്യം കണ്ടെത്തിയിട്ടുണ്ടോ",
+          "out": "on"
+        },
+        {
+          "in": "സാന്നിധ്യം ഇല്ലെന്ന് കാണിക്കുന്നുണ്ടോ",
+          "out": "off"
+        }
+      ]
+    },
+    "light_states_questions": {
+      "values": [
+        {
+          "in": "(ഓണാണോ|ഓൺ ആണോ|പ്രവർത്തിക്കുന്നുണ്ടോ|തെളിഞ്ഞിട്ടുണ്ടോ|തെളിയുന്നുണ്ടോ|തെളിഞ്ഞിരിക്കുകയാണോ|കത്തുന്നുണ്ടോ)",
+          "out": "on"
+        },
+        {
+          "in": "(ഓഫാണോ|ഓഫ് ആണോ|നിർത്തിയിട്ടുണ്ടോ|അണഞ്ഞിട്ടുണ്ടോ|അണഞ്ഞിരിക്കുകയാണോ)",
+          "out": "off"
+        }
+      ]
+    },
+    "light_states_relative": {
+      "values": [
+        {
+          "in": "(ഓണായ|ഓൺ ആയ|പ്രവർത്തിക്കുന്ന|തെളിഞ്ഞ|തെളിയുന്ന|തെളിഞ്ഞിരിക്കുന്ന|കത്തുന്ന)",
+          "out": "on"
+        },
+        {
+          "in": "(ഓഫായ|ഓഫ് ആയ|നിർത്തിയിട്ടുള്ള|അണഞ്ഞ|അണഞ്ഞിരിക്കുന്ന)",
+          "out": "off"
+        }
+      ]
+    },
+    "duration_number": {
+      "values": [
+        {
+          "in": "(ഒന്ന്|ഒരു)",
+          "out": 1
+        },
+        {
+          "in": "രണ്ട്",
+          "out": 2
+        },
+        {
+          "in": "മൂന്ന്",
+          "out": 3
+        },
+        {
+          "in": "നാല്",
+          "out": 4
+        },
+        {
+          "in": "അഞ്ച്",
+          "out": 5
+        },
+        {
+          "in": "ആറ്",
+          "out": 6
+        },
+        {
+          "in": "ഏഴ്",
+          "out": 7
+        },
+        {
+          "in": "എട്ട്",
+          "out": 8
+        },
+        {
+          "in": "(ഒൻപത്|ഒമ്പത്)",
+          "out": 9
+        },
+        {
+          "in": "പത്ത്",
+          "out": 10
+        }
+      ]
+    },
+    "volume_step": {
+      "values": [
+        {
+          "in": "(കൂട്ടൂ|കൂട്ടുക|കൂട്ടുവിൻ)",
+          "out": "up"
+        },
+        {
+          "in": "(കുറയ്ക്കൂ|കുറയ്ക്കുക|കുറയ്ക്കുവിൻ)",
+          "out": "down"
+        }
+      ]
+    }
+  },
+  "expansion_rules": {
+    "temp": "(താപനില|ചൂടുനില|ചൂട്|തണുപ്പ്)",
+    "all": "(എല്ലാ|മുഴുവൻ|സർവ്വ|സകല)",
+    "the": "(ഈ|ആ)",
+    "that": "(എ(ന്ന്|ന്നത്|ന്നുള്ളത്)|അത്)",
+    "fact_that": "എ(ന്നായി|ന്നതായി)",
+    "in": "(ഇ(ൽ|ലെ)|യുടെ ഉള്ളി(ൽ|ലെ)|യി(ലെ|ൽ)|യുടെ അക(ത്തെ|ത്ത്|ത്തുള്ള)|ന്റെ ഉള്ളി(ൽ|ലെ|ലുള്ള)|ൽ|ലെ)",
+    "of": "(യുടെ|ഉടെ|ടെ|ന്റെ|ഇന്റെ)",
+    "to": "(ആയി|വരെ)",
+    "colour": "(നിറം|വർണം|ചായം)",
+    "turn_on": "(ഓണാ(ക്കൂ|ക്കുക|ക്കുവിൻ)|ഇ(ടൂ|ടുക|ടുവിൻ)|ഓൺ ചെ(യ്യൂ|യ്യുക|യ്യുവിൻ)|തെളി(ക്കൂ|ക്കുക|ക്കുവിൻ)|തെളിയി(ക്കൂ|ക്കുക|ക്കുവിൻ))",
+    "turn_off": "(ഓഫാ(ക്കൂ|ക്കുക|ക്കുവിൻ)|നിർ(ത്തൂ|ത്തുക|ത്തുവിൻ)|നിറു(ത്തൂ|ത്തുക|ത്തുവിൻ)|ഓഫ് (ചെയ്യൂ|ചെയ്യുക|ചെയ്യുവിൻ|ആക്കൂ|ആക്കുക|ആക്കുവിൻ)|കെടു(ത്തുക|ത്തൂ|ത്തുവിൻ)|അണ(ക്കൂ|ക്കുക|ക്കുവിൻ))",
+    "_on": "(ഓൺ|പ്രവർത്തന നിരതം)",
+    "_off": "(ഓഫ്|പ്രവർത്തന രഹിതം)",
+    "change": "(മാറ്റുക|ഭേദപ്പെടുത്തുക|പരിവര്‍ത്തനം ചെയ്യുക)",
+    "here": "(ഇവിടെ|ഈ മുറിയിൽ|ഈ സ്ഥലത്ത്)",
+    "everywhere": "(എല്ലാ(യിടത്തും|ടത്തും|യിടങ്ങളിലും)|എങ്ങും|എവി(ടെയും|ടത്തും))",
+    "from": "നി(ന്ന്|ന്നും)",
+    "my": "(എന്റെ|എൻ|മാമക|മമ)",
+    "always": "എ(പ്പോഴും|പ്പഴും|പ്പോളും|പ്പളും|ല്ലായ്പ്പോഴും|ല്ലായ്പ്പോളും|ല്ലാ നേരവും)",
+    "to_percent": "(ശതമാനമായി|ശതമാനം ആയി|% ആയി| ശതമാനമാക്കി|ശതമാനം ആക്കി|% ആക്കി|ശതമാനം വരെ ആക്കി|ശതമാനം വരെ ആയി|% വരെ ആക്കി|% വരെ ആയി)",
+    "fan": "(ഫാൻ|ഫാനും|വിശറി|വിശറിയും|പങ്ക|പങ്കയും|പാറ്റൽ യന്ത്രം|പാറ്റൽ യന്ത്രവും)",
+    "fans": "(ഫാനുകളും|ഫാനുകൾ|പങ്കകളും|പങ്കകൾ|വിശറികളും|വിശറികൾ|പാറ്റൽ യന്ത്രങ്ങളും|പാറ്റൽ യന്ത്രങ്ങൾ)",
+    "fan_singular": "(ഫാൻ|പങ്ക|വിശറി)",
+    "fans_plural": "(ഫാനുകൾ|പങ്കകൾ|വിശറികൾ)",
+    "fans_plural_conjunctive": "(ഫാനുകളും|പങ്കകളും|വിശറികളും)",
+    "what_is": "(എന്താ|എ(ന്ത് ആണ്|ന്താണ്|ന്താകുന്നു)|(ന്താ|ന്നാ)ണ്|എ(ന്നാ|ന്നാണ്|ന്നതാണ്)|എന്തോ(ണ്ടാ|ണ്ടാണ്)|എ(ത്ര|ത്രയാ|ത്രയാണ്|ത്രയാകുന്നു))",
+    "where_is": "(എവിടെയാണ്|എവിടെയുണ്ട്|എവിടെയാണുള്ളത്)",
+    "which_ones": "(ഏതൊക്കെയാണ്|ഏതെല്ലാമാണ്)",
+    "how_many": "(എത്രയുണ്ട്|എത്രയെണ്ണമുണ്ട്)",
+    "locative": "(യിൽ|ിൽ|ൽ)",
+    "list_locative": "(പട്ടികയിൽ|സൂചികയിൽ|സൂചിയിൽ|ലിസ്റ്റിൽ)",
+    "list_locative_attributive": "(പട്ടികയിലെ|ലിസ്റ്റിലെ)",
+    "locative_attributive": "(യിലെ|ിലെ|ലെ)",
+    "fan_genitive_singular": "(ഫാനിന്റെ|പങ്കയുടെ|വിശറിയുടെ|പാറ്റൽ യന്ത്രത്തിന്റെ)",
+    "fan_genitive_plural": "(ഫാനുകളുടെ|പങ്കകളുടെ|വിശറികളുടെ|പാറ്റൽ യന്ത്രങ്ങളുടെ)",
+    "instrumental": "(കൊണ്ട്|ഉപയോഗിച്ച്)",
+    "ablative_from": "(നിന്ന്|നിന്നും)",
+    "named_device_instrumental": "എന്ന (ഉപകരണം|യന്ത്രം) <instrumental>",
+    "named_device_accusative": "എന്ന (ഉപകരണത്തെ|യന്ത്രത്തെ)",
+    "hour_conjunctive": "(മണിക്കൂറും|മണിക്കൂറുകളും)",
+    "minute_conjunctive": "(നിമിഷവും|നിമിഷങ്ങളും|മിനിറ്റും|മിനിറ്റുകളും)",
+    "second_conjunctive": "(നൊടിയും|നൊടികളും|സെക്കൻഡും|സെക്കൻഡുകളും|സെക്കണ്ടും|സെക്കണ്ടുകളും)",
+    "hour_dative": "(മണിക്കൂറിലേക്ക്|മണിക്കൂറുകൾക്ക്)",
+    "minute_dative": "(നിമിഷത്തേക്ക്|നിമിഷങ്ങൾക്ക്|മിനിറ്റിലേക്ക്|മിനിറ്റുകൾക്ക്)",
+    "second_dative": "(നൊടിയിലേക്ക്|നൊടികൾക്ക്|സെക്കൻഡിലേക്ക്|സെക്കൻഡുകൾക്ക്|സെക്കണ്ടിലേക്ക്|സെക്കണ്ടുകൾക്ക്)",
+    "timer_locative": "(നേരതിട്ടക്കരുവിയിൽ|നേരതിട്ടക്കരുവികളിൽ|കാലതിട്ടക്കരുവിയിൽ|കാലതിട്ടക്കരുവികളിൽ|നേരക്കരുവിയിൽ|നേരക്കരുവികളിൽ|നേരനിർണ്ണയക്കരുവിയിൽ|നേരനിർണ്ണയക്കരുവികളിൽ|സമയനിർണ്ണയക്കരുവിയിൽ|സമയനിർണ്ണയക്കരുവികളിൽ|സമയക്കരുവിയിൽ|സമയക്കരുവികളിൽ|റ്റൈമറിൽ|റ്റൈമറുകളിൽ|ടൈമറിൽ|ടൈമറുകളിൽ)",
+    "timer_genitive_singular": "(നേരതിട്ടക്കരുവിയുടെ|കാലതിട്ടക്കരുവിയുടെ|നേരക്കരുവിയുടെ|നേരനിർണ്ണയക്കരുവിയുടെ|സമയനിർണ്ണയക്കരുവിയുടെ|സമയക്കരുവിയുടെ|റ്റൈമറിന്റെ|ടൈമറിന്റെ)",
+    "timer_dative_singular": "(നേരതിട്ടക്കരുവിക്ക്|നേരതിട്ടക്കരുവിയിലേക്ക്|കാലതിട്ടക്കരുവിക്ക്|കാലതിട്ടക്കരുവിയിലേക്ക്|നേരക്കരുവിക്ക്|നേരക്കരുവിയിലേക്ക്|നേരനിർണ്ണയക്കരുവിക്ക്|നേരനിർണ്ണയക്കരുവിയിലേക്ക്|സമയനിർണ്ണയക്കരുവിക്ക്|സമയനിർണ്ണയക്കരുവിയിലേക്ക്|സമയക്കരുവിക്ക്|സമയക്കരുവിയിലേക്ക്|റ്റൈമറിന്|റ്റൈമറിലേക്ക്|ടൈമറിന്|ടൈമറിലേക്ക്)",
+    "duration_attributive": "(ഉള്ള|നീളമുള്ള)",
+    "_brightness": "(തെളിച്ചം|വെണ്മ|പ്രകാശം)",
+    "light": "(വിള(ക്ക്|ക്കും)|ലാ(മ്പ്|മ്പും)|ലൈ(റ്റ്|റ്റും))",
+    "lights": "(വിളക്കുക(ൾ|ളും)|ലാമ്പുക(ൾ|ളും)|ലൈറ്റുക(ൾ|ളും))",
+    "lights_plural_conjunctive": "(വിളക്കുകളും|ലൈറ്റുകളും|ലാമ്പുകളും)",
+    "light_singular": "(വിളക്ക്|ലൈറ്റ്|ലാമ്പ്)",
+    "lights_plural": "(വിളക്കുകൾ|ലൈറ്റുകൾ|ലാമ്പുകൾ)",
+    "media_play": "(പാടിക്കൂ|പ്ലേ ചെയ്യൂ|പ്ലേ ചെയ്യുക|വയ്ക്കൂ|വയ്ക്കുക|ഇടൂ|ഇടുക|ഇടുവിൻ)",
+    "media_mute": "(നിശബ്ദമാക്കുക|ശബ്ദമില്ലാതാക്കൂ|ശബ്ദമില്ലാതാക്കുക|ഒച്ചയില്ലാതാക്കൂ|ഒച്ചയില്ലാതാക്കുക|മ്യൂട്ട് ചെയ്യൂ|മ്യൂട്ട് ചെയ്യുക)",
+    "media_unmute": "(ശബ്ദായമാനമാക്കുക|ശബ്ദമുള്ളതാക്കൂ|ശബ്ദമുള്ളതാക്കുക|ഒച്ചയുള്ളതാക്കൂ|ഒച്ചയുള്ളതാക്കുക|അൺമ്യൂട്ട് ചെയ്യൂ|അൺമ്യൂട്ട് ചെയ്യുക)",
+    "media_previous_item": "(മുമ്പത്തെ|മുൻപത്തെ) (പാട്ട്|ഗാനം|ട്രാക്ക്)",
+    "speed": "(വേഗത|വേഗം|തുരണം|ശീഘ്രത|തകൃതി|തിടുക്കം|സ്പീഡ്|ഗതിവേഗം|ചലനവേഗം|ആക്കം|ത്വരണം)",
+    "switch_singular": "സ്വിച്ച്",
+    "switches_plural": "സ്വിച്ചുകൾ",
+    "lockable_singular": "വാതിൽ",
+    "lockables_plural": "വാതിലുകൾ",
+    "switches_plural_conjunctive": "സ്വിച്ചുകളും",
+    "lockables_plural_conjunctive": "വാതിലുകളും",
+    "vacuum_cleaner": "വാക്വം[ ക്ലീനർ]",
+    "lawn_mower": "(പുല്ലുവെട്ടി|പുല്ലുവെട്ടുന്ന വണ്ടി|പുല്ലുവെട്ടിയന്ത്രം|പുല്ലുവെടുന്ന യന്ത്രം)",
+    "cleaner_base": "(താവളത്തിലേക്ക്|ചാർജ് ചെയ്യുന്ന ഇടത്തേക്ക്)",
+    "cleaning": "(തൂത്തുവാരൽ|അടിച്ചുവാരൽ|പൊടിതുടക്കൽ|വൃത്തിയാക്കൽ|പൊടിനീക്കൽ|പൊടിയൊപ്പൽ)",
+    "hour_unit": "(മണിക്കൂർ|മണിക്കൂറുകൾ)",
+    "minute_unit": "(നിമിഷം|നിമിഷങ്ങൾ|മിനിറ്റ്|മിനിറ്റുകൾ)",
+    "second_unit": "(നൊടി|നൊടികൾ|സെക്കൻഡ്|സെക്കൻഡുകൾ|സെക്കണ്ട്|സെക്കണ്ടുകൾ)",
+    "timer_singular": "(നേരതിട്ടക്കരുവി|കാലതിട്ടക്കരുവി|നേരക്കരുവി|നേരനിർണ്ണയക്കരുവി|സമയനിർണ്ണയക്കരുവി|സമയക്കരുവി|റ്റൈമർ|ടൈമർ)",
+    "timers_plural": "(നേരതിട്ടക്കരുവികൾ|കാലതിട്ടക്കരുവികൾ|നേരക്കരുവികൾ|നേരനിർണ്ണയക്കരുവികൾ|സമയനിർണ്ണയക്കരുവികൾ|സമയക്കരുവികൾ|റ്റൈമറുകൾ|ടൈമറുകൾ)",
+    "timers_plural_conjunctive": "(നേരതിട്ടക്കരുവികളും|കാലതിട്ടക്കരുവികളും|നേരക്കരുവികളും|നേരനിർണ്ണയക്കരുവികളും|സമയനിർണ്ണയക്കരുവികളും|സമയക്കരുവികളും|റ്റൈമറുകളും|ടൈമറുകളും)",
+    "timer_status": "(നില|സ്ഥിതി|സ്റ്റാറ്റസ്)",
+    "timer_set": "(സെറ്റ് ചെയ്യുക|സെറ്റ് ചെയ്യൂ|വയ്ക്കുക|വയ്ക്കൂ|തുടങ്ങുക|തുടങ്ങൂ)",
+    "timer_cancel": "(റദ്ദാക്കുക|റദ്ദാക്കൂ|ക്യാൻസൽ ചെയ്യുക|നിർത്തുക|നിർത്തൂ)",
+    "duration_hours": "({timer_hours:hours}|{duration_number:hours}) <hour_unit>",
+    "duration_hours_combined": "({timer_hours:hours}|{duration_number:hours}) (<hour_unit>|<hour_conjunctive>)",
+    "duration_hours_dative": "({timer_hours:hours}|{duration_number:hours}) <hour_dative>",
+    "duration_minutes": "({timer_minutes:minutes}|{duration_number:minutes}) <minute_unit>",
+    "duration_minutes_combined": "({timer_minutes:minutes}|{duration_number:minutes}) (<minute_unit>|<minute_conjunctive>)",
+    "duration_minutes_dative": "({timer_minutes:minutes}|{duration_number:minutes}) <minute_dative>",
+    "duration_seconds": "({timer_seconds:seconds}|{duration_number:seconds}) <second_unit>",
+    "duration_seconds_combined": "({timer_seconds:seconds}|{duration_number:seconds}) (<second_unit>|<second_conjunctive>)",
+    "duration_seconds_dative": "({timer_seconds:seconds}|{duration_number:seconds}) <second_dative>",
+    "timer_start_hours": "({timer_hours:start_hours}|{duration_number:start_hours}) <hour_unit>",
+    "timer_start_minutes": "({timer_minutes:start_minutes}|{duration_number:start_minutes}) <minute_unit>",
+    "timer_start_seconds": "({timer_seconds:start_seconds}|{duration_number:start_seconds}) <second_unit>",
+    "turn": "(ചെ(യ്യൂ|യ്യുക|വിൻ)|ആ(ക്കുക|ക്കൂ|ക്കുവിൻ))",
+    "open": "(തുറ(ക്കൂ|ക്കുക|ക്കുവിൻ))",
+    "close": "(അട(ക്കൂ|ക്കുക|ക്കുവിൻ)|മൂടു(ക|വിൻ)|മൂടൂ|മറയ്(ക്കുക|ക്കൂ|ക്കുവിൻ))",
+    "set": "(ക്രമപ്പെടുത്തുക|ആക്കുക|ക്രമീകരിക്കുക|ക്രമമാക്കുക|സജ്ജീകരിക്കുക|വയ്ക്കുക|നിലകൊള്ളിക്കുക|ഒരുക്കുക|സജ്ജമാക്കുക)",
+    "broadcast": "(പ്രക്ഷേപിക്കുക|പ്രസാരണം (ചെയ്യുക|നടത്തുക|നടപ്പിലാക്കുക|നിർവഹിക്കുക)|പ്രക്ഷേപണം (ചെയ്യുക|നടത്തുക|നടപ്പിലാക്കുക|നിർവഹിക്കുക) |പ്രസാരം (ചെയ്യുക|നടത്തുക|നടപ്പിലാക്കുക|നിർവഹിക്കുക)|സംപ്രേക്ഷണം (ചെയ്യുക|നടത്തുക|നടപ്പിലാക്കുക|നിർവഹിക്കുക)|വിഞ്ജാപനം (ചെയ്യുക|നടത്തുക|നടപ്പിലാക്കുക|നിർവഹിക്കുക) |പരസ്യം (ചെയ്യുക|നടത്തുക|നടപ്പിലാക്കുക|നിർവഹിക്കുക)|വിളംബരം (ചെയ്യുക|നടത്തുക|നടപ്പിലാക്കുക)|പ്രസ്ഥാപനം (ചെയ്യുക|നടത്തുക|നടപ്പിലാക്കുക)|പ്രഖ്യാപനം (ചെയ്യുക|നടത്തുക|നടപ്പിലാക്കുക)|ബ്രോഡ്ക്യാസ്റ്റ് (ചെയ്യുക|നടത്തുക|നടപ്പിലാക്കുക))",
+    "check_off": "(വെട്ടി(ക്കളയുക| കളയുക| മാറ്റുക|യിടുക| ഇടുക)|ശരി (ചിഹ്നമിടുക|അടയാളപ്പെടുത്തുക))",
+    "complete": "(പൂർത്തിയാക്കുക|മുഴുമിപ്പിക്കുക|തീർക്കുക|ചെയ്തു തീർക്കുക)",
+    "remove": "(നീക്കുക|നീക്കം ചെയ്യുക|ഒഴിവാക്കുക|തുടച്ചുകളയുക)",
+    "listening_question": "(കേൾക്കുന്നുണ്ടോ|ശ്രദ്ധിക്കുന്നുണ്ടോ)",
+    "reccording_question": "(റെക്കോഡ് ചെയ്യുന്നുണ്ടോ|പതിവു ചെയ്യുന്നുണ്ടോ)",
+    "clean_floor": "(തൂത്തുവാരൂ|തൂത്തുവാരുക|വൃത്തിയാക്കൂ|വൃത്തിയാക്കുക|വാക്വം ചെയ്യുക)",
+    "start_cleaner": "(തുടങ്ങൂ|തുടങ്ങുക|ഓടിക്കൂ|ഓടിക്കുക)",
+    "mow_grass": "പുല്ല് (വെട്ടൂ|വെട്ടുക|വെട്ടാൻ തുടങ്ങൂ|വെട്ടാൻ തുടങ്ങുക)",
+    "return_cleaner": "തിരികെ (അയയ്ക്കൂ|അയയ്ക്കുക)",
+    "stop_mowing": "പുല്ല് വെട്ടുന്നത് (നിർത്തൂ|നിർത്തുക|നിറുത്തൂ|നുറുത്തുക)",
+    "named": "(എന്ന|എന്ന പേരുള്ള)",
+    "after_duration": "കഴിഞ്ഞ്",
+    "timer_pause": "(ഇടയ്ക്കു നിർത്തുക|ഇടയ്ക്കു നിർത്തൂ|ഇടനിർത്തുക|തെല്ലിട (നിർത്തുക|നിറുത്തുക)|നിർത്തിവയ്ക്കുക|നിർത്തിവയ്ക്കൂ|താൽക്കാലികമായി നിർത്തുക|താൽക്കാലികമായി നിർത്തൂ|പോസ് ചെയ്യുക|പോസ് ചെയ്യൂ)",
+    "timer_unpause": "(തുടരുക|തുടരൂ|വീണ്ടും തുടങ്ങുക|വീണ്ടും തുടങ്ങൂ|തുടർന്ന് ഓടിക്കുക|തുടർന്ന് ഓടിക്കൂ|റെസ്യൂം ചെയ്യുക|റെസ്യൂം ചെയ്യൂ)",
+    "timer_increase": "(കൂട്ടുക|കൂട്ടൂ|കൂടുതൽ ആക്കുക|കൂടുതലാക്കുക|നീട്ടുക|നീട്ടൂ|വർധിപ്പിക്കുക|വർദ്ധിപ്പിക്കുക|ആഡ് ചെയ്യുക|ഇൻക്രീസ് ചെയ്യുക)",
+    "timer_decrease": "(കുറയ്ക്കുക|കുറയ്ക്കൂ|കുറവാക്കുക|കുറവാക്കൂ|നീക്കുക|നീക്കൂ|ചുരുക്കുക|ചുരുക്കൂ|കുറവുവരുത്തുക|ചെറുതാക്കുക|കൊച്ചാക്കുക|വെട്ടിച്ചുരുക്കുക|ഹ്രസിപ്പിക്കുക|ലോപിപ്പിക്കുക|ക്ഷയിപ്പിക്കുക|ന്യൂനീകരിക്കുക|ലഘൂകരിക്കുക|ശോഷിപ്പിക്കുക|റിഡ്യൂസ് ചെയ്യുക|ഡിക്രീസ് ചെയ്യുക)",
+    "volume_noun": "(ഒച്ച|ശബ്ദം|നാദം)",
+    "volume_set": "(ആക്കൂ|ആക്കുക|ആക്കുവിൻ)",
+    "volume_increase": "(കൂട്ടൂ|കൂട്ടുക|കൂട്ടുവിൻ)",
+    "volume_decrease": "(കുറയ്ക്കൂ|കുറയ്ക്കുക|കുറയ്ക്കുവിൻ)"
+  },
+  "skip_words": [
+    "ദയവായി",
+    "ദയവു ചെയ്ത്",
+    "പ്ലീസ്",
+    "കനിവായി"
+  ],
+  "responses": {
+    "errors": {
+      "no_intent": "ക്ഷമിക്കണം, എനിക്ക് അത് മനസ്സിലായില്ല",
+      "no_area": "{{ area }} എന്ന പേരുള്ള ഇടമില്ല",
+      "no_domain_in_area": "ക്ഷമിക്കണം, {{ area }} എന്നിടത്ത് ഒരു {{ domain }} ഉള്ളതായി എനിക്കറിയില്ല",
+      "no_device_class_in_area": "ക്ഷമിക്കണം, {{ area }} എന്നിടത്ത് ഒരു {{ device_class }} ഉള്ളതായി എനിക്കറിയില്ല",
+      "no_entity": "{{ entity }} എന്ന് പേരുള്ള ഉപകരണമോ ഉരുവോ ഇല്ല",
+      "handle_error": "ഇന്റന്റ് കൈകാര്യം ചെയ്യുമ്പോൾ അപ്രതീക്ഷിതമായ ഒരു പിശക് സംഭവിച്ചു",
+      "no_floor": "{{ floor }} എന്ന പേരുള്ള നിലയില്ല",
+      "no_domain": "ക്ഷമിക്കണം, ഒരു {{ domain }} ഉള്ളതായി എനിക്കറിയില്ല",
+      "no_domain_in_floor": "ക്ഷമിക്കണം, {{ floor }} നിലയിൽ ഒരു {{ domain }} ഉള്ളതായി എനിക്കറിയില്ല",
+      "no_device_class": "ക്ഷമിക്കണം, ഒരു {{ device_class }} ഉള്ളതായി എനിക്കറിയില്ല",
+      "no_device_class_in_floor": "ക്ഷമിക്കണം, {{ floor }} നിലയിൽ ഒരു {{ device_class }} ഉള്ളതായി എനിക്കറിയില്ല",
+      "no_entity_in_area": "{{ area }} എന്നിടത്ത് {{ entity }} എന്ന് പേരുള്ള ഉരുവില്ല",
+      "no_entity_in_floor": "{{ floor }} നിലയിൽ {{ entity }} എന്ന് പേരുള്ള ഉരുവില്ല",
+      "entity_wrong_state": "ഒരു ഉപകരണവും {{ state | lower }} എന്ന അവസ്ഥയിലല്ല",
+      "feature_not_supported": "ആവശ്യമായ സവിശേഷത ഒരു ഉപകരണവും പിന്തുണയ്ക്കുന്നില്ല",
+      "no_entity_exposed": "{{ entity }} വെളിപ്പെടുത്തിയിട്ടില്ല",
+      "no_entity_in_area_exposed": "{{ area }} എന്നിടത്തെ {{ entity }} വെളിപ്പെടുത്തിയിട്ടില്ല",
+      "no_entity_in_floor_exposed": "{{ floor }} നിലയിലെ {{ entity }} വെളിപ്പെടുത്തിയിട്ടില്ല",
+      "no_domain_exposed": "ഒരു {{ domain }}ഉം വെളിപ്പെടുത്തിയിട്ടില്ല",
+      "no_domain_in_area_exposed": "{{ area }} എന്നിടത്ത് ഒരു {{ domain }}ഉം വെളിപ്പെടുത്തിയിട്ടില്ല",
+      "no_domain_in_floor_exposed": "{{ floor }} നിലയിൽ ഒരു {{ domain }}ഉം വെളിപ്പെടുത്തിയിട്ടില്ല",
+      "no_device_class_exposed": "ഒരു {{ device_class }}ഉം വെളിപ്പെടുത്തിയിട്ടില്ല",
+      "no_device_class_in_area_exposed": "{{ area }} എന്നിടത്ത് ഒരു {{ device_class }}ഉം വെളിപ്പെടുത്തിയിട്ടില്ല",
+      "no_device_class_in_floor_exposed": "{{ floor }} നിലയിൽ ഒരു {{ device_class }}ഉം വെളിപ്പെടുത്തിയിട്ടില്ല",
+      "duplicate_entities": "{{ entity }} എന്ന് പേരുള്ള ഒന്നിലധികം ഉരുക്കളുണ്ട്",
+      "duplicate_entities_in_area": "{{ area }} എന്നിടത്ത് {{ entity }} എന്ന് പേരുള്ള ഒന്നിലധികം ഉരുക്കളുണ്ട്",
+      "duplicate_entities_in_floor": "{{ floor }} നിലയിൽ {{ entity }} എന്ന് പേരുള്ള ഒന്നിലധികം ഉരുക്കളുണ്ട്",
+      "duplicate_targets": "നിങ്ങളുടെ അഭ്യർത്ഥനയുമായി ഒന്നിലധികം ഉന്നങ്ങൾ പൊരുത്തപ്പെടുന്നു",
+      "timer_not_found": "ആ ടൈമർ കണ്ടെത്താനായില്ല",
+      "multiple_timers_matched": "ഒന്നിലധികം ടൈമറുകൾ ഒരുമിച്ച് കൈകാര്യം ചെയ്യാൻ എനിക്ക് കഴിയില്ല",
+      "no_timer_support": "ഈ ഉപകരണത്തിൽ ടൈമറുകൾ പിന്തുണയ്ക്കുന്നില്ല"
+    },
+    "intents": {
+      "HassGetState": {
+        "one": "{% set states = {\n  'on': 'ഓൺ',\n  'off': 'ഓഫ്',\n  'open': 'തുറന്നിരിക്കുന്നു',\n  'closed': 'അടഞ്ഞിരിക്കുന്നു',\n  'opening': 'തുറന്നുകൊണ്ടിരിക്കുന്നു',\n  'closing': 'അടഞ്ഞുകൊണ്ടിരിക്കുന്നു',\n  'locked': 'പൂട്ടിയിരിക്കുന്നു',\n  'unlocked': 'പൂട്ടിയിട്ടില്ല',\n  'home': 'വീട്ടിലുണ്ട്',\n  'not_home': 'വീട്ടിലില്ല',\n  'unknown': 'അറിയില്ല',\n  'unavailable': 'ലഭ്യമല്ല'\n} %}\n{{ slots.name }}: {{ states.get(state.state, state.state_with_unit) }}\n",
+        "one_yesno": "{% if query.matched %}\n  അതെ\n{% else %}\n  {% set states = {\n  'on': 'ഓൺ',\n  'off': 'ഓഫ്',\n  'open': 'തുറന്നിരിക്കുന്നു',\n  'closed': 'അടഞ്ഞിരിക്കുന്നു',\n  'opening': 'തുറന്നുകൊണ്ടിരിക്കുന്നു',\n  'closing': 'അടഞ്ഞുകൊണ്ടിരിക്കുന്നു',\n  'locked': 'പൂട്ടിയിരിക്കുന്നു',\n  'unlocked': 'പൂട്ടിയിട്ടില്ല',\n  'home': 'വീട്ടിലുണ്ട്',\n  'not_home': 'വീട്ടിലില്ല',\n  'unknown': 'അറിയില്ല',\n  'unavailable': 'ലഭ്യമല്ല'\n} %}\n  അല്ല. {{ slots.name }}: {{ states.get(state.state, state.state_with_unit) }}\n{% endif %}\n",
+        "any": "{% if query.matched %}\n  {% set names = query.matched | map(attribute=\"name\") | sort | list %}\n  അതെ: {{ names[:4] | join(', ') }}{% if names | length > 4 %}, കൂടാതെ {{ names | length - 4 }} {{ 'പേർ' if slots.domain == 'person' else 'എണ്ണം' }}{% endif %}\n{% else %}\n  ഇല്ല\n{% endif %}\n",
+        "all": "{% if query.matched and not query.unmatched %}\n  അതെ\n{% elif query.unmatched %}\n  {% set names = query.unmatched | map(attribute=\"name\") | sort | list %}\n  അല്ല. {{ \"ഈ സ്ഥലത്തില്ലാത്തവർ\" if slots.domain == \"person\" else \"ഈ അവസ്ഥയിലല്ലാത്തവ\" }}: {{ names[:4] | join(', ') }}{% if names | length > 4 %}, കൂടാതെ {{ names | length - 4 }} {{ 'പേർ' if slots.domain == 'person' else 'എണ്ണം' }}{% endif %}\n{% else %}\n  ഒന്നും കണ്ടെത്തിയില്ല\n{% endif %}\n",
+        "which": "{% if query.matched %}\n  {% set names = query.matched | map(attribute=\"name\") | sort | list %}\n  {{ names[:4] | join(', ') }}{% if names | length > 4 %}, കൂടാതെ {{ names | length - 4 }} {{ 'പേർ' if slots.domain == 'person' else 'എണ്ണം' }}{% endif %}\n{% else %}\n  {{ \"ആരുമില്ല\" if slots.domain == \"person\" else \"ഒന്നുമില്ല\" }}\n{% endif %}\n",
+        "how_many": "{{ query.matched | length }}\n",
+        "where": "{% if not query.matched %}\n  {{ slots.name }} എവിടെയാണെന്ന് അറിയില്ല\n{% elif state.state == 'home' %}\n  {{ slots.name }} വീട്ടിലുണ്ട്\n{% elif state.state == 'not_home' %}\n  {{ slots.name }} വീട്ടിലില്ല\n{% elif state.state in ['unknown', 'unavailable'] %}\n  {{ slots.name }} എവിടെയാണെന്ന് അറിയില്ല\n{% else %}\n  {{ slots.name }} {{ state.state }} എന്ന സ്ഥലത്തുണ്ട്\n{% endif %}\n"
+      },
+      "HassTurnOff": {
+        "default": "{{ slots.name }} നിറുത്തി",
+        "lights_area": "ലൈറ്റുകൾ ഓഫാക്കി",
+        "lights_floor": "{{ slots.floor }} നിലയിലെ വിളക്കുകൾ അണച്ചു",
+        "fans_area": "പങ്കകൾ നിറുത്തി",
+        "cover": "{{ slots.name }} അടച്ചു",
+        "cover_device_class": "{{ slots.device_class }} അടച്ചു",
+        "valve": "{{ slots.name }} അടച്ചു",
+        "light_all": "എല്ലാ വിളക്കുകളും ഓഫാക്കി"
+      },
+      "HassClimateSetTemperature": {
+        "default": "താപനില {{ slots.temperature }} ഡിഗ്രികൾ ആയി ക്രമീകരിച്ചു"
+      },
+      "HassStartTimer": {
+        "default": "{% set numbers = {'ഒന്ന്': 1, 'ഒരു': 1, 'രണ്ട്': 2, 'മൂന്ന്': 3, 'നാല്': 4, 'അഞ്ച്': 5, 'ആറ്': 6, 'ഏഴ്': 7, 'എട്ട്': 8, 'ഒൻപത്': 9, 'ഒമ്പത്': 9, 'പത്ത്': 10} %} {% set hours = numbers.get(slots.hours | default(''), slots.hours | default(0)) | int %} {% set minutes = numbers.get(slots.minutes | default(''), slots.minutes | default(0)) | int %} {% set seconds = numbers.get(slots.seconds | default(''), slots.seconds | default(0)) | int %} {% set parts = [] %} {% if hours > 0 %} {% set parts = parts + [hours ~ ' മണിക്കൂർ'] %} {% endif %} {% if minutes > 0 %} {% set parts = parts + [minutes ~ (' നിമിഷം' if minutes == 1 else ' നിമിഷങ്ങൾ')] %} {% endif %} {% if seconds > 0 %} {% set parts = parts + [seconds ~ (' നൊടി' if seconds == 1 else ' നൊടികൾ')] %} {% endif %} {% if slots.name is defined %}{{ slots.name | trim }} എന്ന {% endif %}{{ parts | join(' ') }} ടൈമർ തുടങ്ങി",
+        "command": "{% set numbers = {'ഒന്ന്': 1, 'ഒരു': 1, 'രണ്ട്': 2, 'മൂന്ന്': 3, 'നാല്': 4, 'അഞ്ച്': 5, 'ആറ്': 6, 'ഏഴ്': 7, 'എട്ട്': 8, 'ഒൻപത്': 9, 'ഒമ്പത്': 9, 'പത്ത്': 10} %} {% set hours = numbers.get(slots.hours | default(''), slots.hours | default(0)) | int %} {% set minutes = numbers.get(slots.minutes | default(''), slots.minutes | default(0)) | int %} {% set seconds = numbers.get(slots.seconds | default(''), slots.seconds | default(0)) | int %} {% set parts = [] %} {% if hours > 0 %} {% set parts = parts + [hours ~ ' മണിക്കൂർ'] %} {% endif %} {% if minutes > 0 %} {% set parts = parts + [minutes ~ (' നിമിഷം' if minutes == 1 else ' നിമിഷങ്ങൾ')] %} {% endif %} {% if seconds > 0 %} {% set parts = parts + [seconds ~ (' നൊടി' if seconds == 1 else ' നൊടികൾ')] %} {% endif %} {{ parts | join(' ') }} കഴിഞ്ഞ് ചെയ്യാം"
+      },
+      "HassShoppingListAddItem": {
+        "item_added": "{{ slots.item }} ചേർത്തു"
+      },
+      "HassTurnOn": {
+        "default": "{{ slots.name }} ഓണാക്കി",
+        "lights_area": "ലാമ്പുകൾ തെളിച്ചു",
+        "lights_floor": "{{ slots.floor }} നിലയിലെ വിളക്കുകൾ തെളിച്ചു",
+        "fans_area": "ഫാനുകൾ ചലിപ്പിച്ചു",
+        "cover": "{{ slots.name }} തുറന്നു",
+        "cover_device_class": "{{ slots.device_class }} തുറന്നു",
+        "valve": "{{ slots.name }} തുറന്നു",
+        "script": "{{ slots.name }} പ്രവർത്തിപ്പിച്ചു",
+        "scene": "{{ slots.name }} സജീവമാക്കി"
+      },
+      "HassMediaPause": {
+        "default": "നിർത്തി"
+      },
+      "HassGetCurrentTime": {
+        "default": "{% set minute_str = '{0:02d}'.format(slots.time.minute) %} {{ slots.time.hour }}:{{ minute_str }}\n"
+      },
+      "HassPauseTimer": {
+        "default": "നേരക്കരുവി ഇടയ്ക്കു നിർത്തി"
+      },
+      "HassNevermind": {
+        "default": ""
+      },
+      "HassTimerStatus": {
+        "default": "{% set num_timers = slots.timers | length %}\n{% set active_timers = slots.timers | selectattr('is_active') | list %}\n{% set num_active_timers = active_timers | length %}\n{% set paused_timers = slots.timers | rejectattr('is_active') | list %}\n{% set num_paused_timers = paused_timers | length %}\n{% set next_timer = None %}\n\n{% if num_timers == 0: %}\n  ടൈമറുകളൊന്നുമില്ല.\n{% elif num_active_timers == 0: %}\n  {# സജീവ ടൈമറുകളില്ല #}\n  {% if num_paused_timers == 1: %}\n    {% set next_timer = paused_timers[0] %}\n    ടൈമർ താൽക്കാലികമായി നിർത്തി.\n  {% else: %}\n    {{ num_paused_timers }} ടൈമറുകൾ നിർത്തിവച്ചിരിക്കുന്നു.\n  {% endif %}\n{% else: %}\n  {# കുറഞ്ഞത് ഒരു സജീവ ടൈമർ #}\n  {% if num_active_timers == 1: %}\n    {% set next_timer = active_timers[0] %}\n  {% else: %}\n    {# ആദ്യം തീരുന്ന സജീവ ടൈമർ എടുക്കുക #}\n    {% set sorted_timers = active_timers | sort(attribute='total_seconds_left') %}\n    {% set next_timer = sorted_timers[0] %}\n    {{ num_active_timers }} ടൈമറുകൾ പ്രവർത്തിക്കുന്നു.\n  {% endif %}\n\n  {% if num_paused_timers == 1: %}\n    1 ടൈമർ നിർത്തിവച്ചിരിക്കുന്നു.\n  {% elif num_paused_timers > 0: %}\n    {{ num_paused_timers }} ടൈമറുകൾ നിർത്തിവച്ചിരിക്കുന്നു.\n  {% endif %}\n{% endif %}\n\n{% if next_timer: %}\n  {# കുറഞ്ഞത് ഒരു സജീവ ടൈമർ #}\n  {% if (next_timer.rounded_hours_left == 1) and (next_timer.rounded_minutes_left > 0): %}\n    1 മണിക്കൂർ ഉം {{ next_timer.rounded_minutes_left }} മിനിറ്റ്\n  {% elif (next_timer.rounded_hours_left == 1): %}\n    1 മണിക്കൂർ\n  {% elif (next_timer.rounded_hours_left > 1) and (next_timer.rounded_minutes_left > 0): %}\n    {{ next_timer.rounded_hours_left }} മണിക്കൂർ ഉം {{ next_timer.rounded_minutes_left }} മിനിറ്റ്\n  {% elif (next_timer.rounded_hours_left > 1): %}\n    {{ next_timer.rounded_hours_left }} മണിക്കൂർ\n  {% elif (next_timer.rounded_minutes_left == 1) and (next_timer.rounded_seconds_left > 0): %}\n    1 മിനിറ്റ് ഉം {{ next_timer.rounded_seconds_left }} സെക്കൻഡ്\n  {% elif (next_timer.rounded_minutes_left == 1): %}\n    1 മിനിറ്റ്\n  {% elif (next_timer.rounded_minutes_left > 1) and (next_timer.rounded_seconds_left > 0): %}\n    {{ next_timer.rounded_minutes_left }} മിനിറ്റ് ഉം {{ next_timer.rounded_seconds_left }} സെക്കൻഡ്\n  {% elif (next_timer.rounded_minutes_left > 1): %}\n    {{ next_timer.rounded_minutes_left }} മിനിറ്റ്\n  {% elif (next_timer.rounded_seconds_left == 1): %}\n    1 സെക്കൻഡ്\n  {% elif (next_timer.rounded_seconds_left > 1): %}\n    {{ next_timer.rounded_seconds_left }} സെക്കൻഡ്\n  {% endif %}\n\n  {% if num_timers > 1: %}\n    {# വേർതിരിക്കാൻ അധിക വിവരം #}\n    ബാക്കി\n    {% if (next_timer.start_hours > 0) and (next_timer.start_minutes > 0): %}\n      {{ next_timer.start_hours }} മണിക്കൂർ ഉം {{ next_timer.start_minutes }} മിനിറ്റ്\n    {% elif (next_timer.start_hours > 0): %}\n      {{ next_timer.start_hours }} മണിക്കൂർ\n    {% elif (next_timer.start_minutes > 0) and (next_timer.start_seconds > 0): %}\n      {{ next_timer.start_minutes }} മിനിറ്റ് ഉം {{ next_timer.start_seconds }} സെക്കൻഡ്\n    {% elif (next_timer.start_minutes > 0): %}\n      {{ next_timer.start_minutes }} മിനിറ്റ്\n    {% elif (next_timer.start_seconds > 0): %}\n      {{ next_timer.start_seconds }} സെക്കൻഡ്\n    {% endif %}\n\n    {% if next_timer.name: %}\n      {{ next_timer.name }}\n    {% elif next_timer.area: %}\n      {{ next_timer.area }}\n    {% endif %}\n\n    ടൈമറിൽ.\n  {% else: %}\n    ബാക്കിയുണ്ട്.\n  {% endif %}\n{% endif %}\n"
+      },
+      "HassListAddItem": {
+        "item_added": "{{ slots.item }} ചേർത്തു"
+      },
+      "HassMediaPlayerUnmute": {
+        "default": "ഒച്ചയുള്ളതാക്കി"
+      },
+      "HassGetCurrentDate": {
+        "default": "{% set months = {\n   1: 'ജനുവരി', 2: 'ഫെബ്രുവരി', 3: 'മാർച്ച്', 4: 'ഏപ്രിൽ',\n   5: 'മേയ്', 6: 'ജൂൺ', 7: 'ജൂലൈ', 8: 'ഓഗസ്റ്റ്',\n   9: 'സെപ്റ്റംബർ', 10: 'ഒക്ടോബർ', 11: 'നവംബർ', 12: 'ഡിസംബർ'\n} %} {{ slots.date.year }} {{ months[slots.date.month] }} {{ slots.date.day }}\n"
+      },
+      "HassUnpauseTimer": {
+        "default": "നേരക്കരുവി തുടരുന്നു"
+      },
+      "HassMediaPrevious": {
+        "default": "മുമ്പത്തെ പാട്ട് വയ്ക്കുന്നു"
+      },
+      "HassVacuumCleanArea": {
+        "default": "വൃത്തിയാക്കൽ തുടങ്ങി"
+      },
+      "HassLawnMowerStartMowing": {
+        "default": "പുല്ല് വെട്ടാൻ തുടങ്ങി"
+      },
+      "HassGetWeather": {
+        "default": "{% set weather_condition = {\n  'clear': 'ഉം തെളിഞ്ഞതും',\n  'clear-night': 'ഉം തെളിഞ്ഞതും',\n  'cloudy': 'ഉം മേഘാവൃതവും',\n  'exceptional': 'ഉം അസാധാരണവും',\n  'fog': 'മൂടൽമഞ്ഞോടെ',\n  'hail': 'ആലിപ്പഴത്തോടെ',\n  'lightning': 'മിന്നലോടെ',\n  'lightning-rainy': 'മിന്നലും മഴയും',\n  'partlycloudy': 'ഉം ഭാഗികമായി മേഘാവൃതവും',\n  'pouring': 'ഉം കനത്ത മഴയും',\n  'rainy': 'ഉം മഴയും',\n  'snowy': 'ഉം മഞ്ഞുവീഴ്ചയും',\n  'snowy-rainy': 'മഞ്ഞും മഴയും',\n  'sunny': 'ഉം വെയിലും',\n  'windy': 'ഉം കാറ്റും',\n  'windy-variant': 'കാറ്റും മേഘങ്ങളും'\n} %} {{ state.attributes.get('temperature') }} {{ state.attributes.get('temperature_unit') }} {{ weather_condition.get((state.state | string).lower(), \"\") }}\n"
+      },
+      "HassLightSet": {
+        "brightness": "{{ slots.name }}ന്റെ തെളിച്ചം {{ slots.brightness }} ആക്കി",
+        "brightness_area": "{{ slots.area }}യിലെ വെളിച്ചം {{ slots.brightness }} ആയി ക്രമപ്പെടുത്തി",
+        "color": "{{ slots.name }}ന്റെ നിറം {{ slots.color }} ആക്കി മാറ്റി",
+        "temperature": "{{ slots.name }}ന്റെ വർണ താപനില ക്രമപ്പെടുത്തി",
+        "brightness_only": "തെളിച്ചം ക്രമപ്പെടുത്തി",
+        "floor_brightness": "{{ slots.floor }} നിലയിലെ തെളിച്ചം ക്രമപ്പെടുത്തി",
+        "color_only": "നിറം ക്രമപ്പെടുത്തി",
+        "area_color": "{{ slots.area }}യിലെ നിറം ക്രമപ്പെടുത്തി",
+        "floor_color": "{{ slots.floor }} നിലയിലെ നിറം ക്രമപ്പെടുത്തി",
+        "temperature_only": "വർണ താപനില ക്രമപ്പെടുത്തി",
+        "area_temperature": "{{ slots.area }}യിലെ വർണ താപനില ക്രമപ്പെടുത്തി",
+        "floor_temperature": "{{ slots.floor }} നിലയിലെ വർണ താപനില ക്രമപ്പെടുത്തി"
+      },
+      "HassCancelAllTimers": {
+        "default": "{% if slots.canceled < 1: %} ഒരു നേരക്കരുവിയും റദ്ദാക്കിയില്ല. {% elif slots.canceled == 1: %} 1 നേരക്കരുവി റദ്ദാക്കി. {% else: %} {{ slots.canceled }} നേരക്കരുവികൾ റദ്ദാക്കി. {% endif %}\n",
+        "area": "{% if slots.canceled < 1: %} {{ slots.area }}യിൽ ഒരു നേരക്കരുവിയും റദ്ദാക്കിയില്ല. {% elif slots.canceled == 1: %} {{ slots.area }}യിൽ 1 നേരക്കരുവി റദ്ദാക്കി. {% else: %} {{ slots.area }}യിൽ {{ slots.canceled }} നേരക്കരുവികൾ റദ്ദാക്കി. {% endif %}\n"
+      },
+      "HassLawnMowerDock": {
+        "default": "പുല്ലുവെട്ടി തിരികെ അയച്ചു"
+      },
+      "HassBroadcast": {
+        "default": "ചെയ്തു"
+      },
+      "HassVacuumStart": {
+        "default": "തൂത്തുവാരൽ തുടങ്ങി"
+      },
+      "HassMediaUnpause": {
+        "default": "തുടരുന്നു"
+      },
+      "HassShoppingListCompleteItem": {
+        "item_completed": "{{ slots.item }} വെട്ടിക്കളഞ്ഞു"
+      },
+      "HassSetPosition": {
+        "default": "സ്ഥാനം ക്രമീകരിച്ചു",
+        "cover_device_class": "{% set translations = {\n  \"window\": \"ജനലിന്റെ\",\n  \"blind\": \"ബ്ലൈൻഡിന്റെ\",\n  \"curtain\": \"കർട്ടന്റെ\",\n  \"shutter\": \"ഷട്ടറിന്റെ\",\n  \"garage\": \"ഗരാജ് വാതിലിന്റെ\"\n} %} {{ translations.get(slots.device_class, slots.device_class) }} സ്ഥാനം ക്രമീകരിച്ചു"
+      },
+      "HassMediaNext": {
+        "default": "അടുത്തത് പ്ലേ ചെയ്യുന്നു"
+      },
+      "HassSetVolumeRelative": {
+        "default": "{% if slots.volume_step == \"up\" %}\nഒച്ച കൂട്ടി\n{% elif slots.volume_step == \"down\" %}\nഒച്ച കുറച്ചു\n{% else %}\nഒച്ച മാറ്റി\n{% endif %}\n",
+        "increase": "{% if slots.volume_step | float == 0 %}\nഒച്ച മാറ്റി\n{% else %}\nഒച്ച കൂട്ടി\n{% endif %}\n",
+        "decrease": "{% if slots.volume_step | float == 0 %}\nഒച്ച മാറ്റി\n{% else %}\nഒച്ച കുറച്ചു\n{% endif %}\n"
+      },
+      "HassCancelTimer": {
+        "default": "ടൈമർ റദ്ദാക്കി"
+      },
+      "HassMediaSearchAndPlay": {
+        "default": "{% if slots.media: %}\nപാടിക്കുന്നു\n{% else: %}\nമീഡിയ കണ്ടെത്താനായില്ല\n{% endif %}\n"
+      },
+      "HassClimateGetTemperature": {
+        "current_temperature": "{% set current_temperature = state_attr(state.entity_id, 'current_temperature') %} {% set temperature = state.state if current_temperature is none else current_temperature %} {% if temperature not in ['unavailable', 'unknown'] %}\n  {{ temperature | float | round(1) | replace(\".0\", \"\") }} ഡിഗ്രി\n{% else %}\n  താപനില സെൻസർ ലഭ്യമല്ല.\n{% endif %}\n",
+        "target_temperature": "{% set target_temperature = state_attr(state.entity_id, 'temperature') %} {% set temperature = state.state if target_temperature is none else target_temperature %} {% if temperature not in ['unavailable', 'unknown'] %}\n  {{ temperature | float | round(1) | replace(\".0\", \"\") }} ഡിഗ്രി\n{% else %}\n  തെർമോസ്റ്റാറ്റ് ലഭ്യമല്ല.\n{% endif %}\n",
+        "default": "{{ state.state }} ഡിഗ്രികൾ"
+      },
+      "HassSetVolume": {
+        "default": "ഒച്ച മാറ്റി"
+      },
+      "HassFanSetSpeed": {
+        "default": "വേഗത ക്രമീകരിച്ചു"
+      },
+      "HassListCompleteItem": {
+        "item_completed": "{{ slots.item }} വെട്ടിക്കളഞ്ഞു"
+      },
+      "HassDecreaseTimer": {
+        "default": "{% set numbers = {'ഒന്ന്': 1, 'ഒരു': 1, 'രണ്ട്': 2, 'മൂന്ന്': 3, 'നാല്': 4, 'അഞ്ച്': 5, 'ആറ്': 6, 'ഏഴ്': 7, 'എട്ട്': 8, 'ഒൻപത്': 9, 'ഒമ്പത്': 9, 'പത്ത്': 10} %} {% set hours = numbers.get(slots.hours | default(''), slots.hours | default(0)) | int %} {% set minutes = numbers.get(slots.minutes | default(''), slots.minutes | default(0)) | int %} {% set seconds = numbers.get(slots.seconds | default(''), slots.seconds | default(0)) | int %} {% set parts = [] %} {% if hours > 0 %} {% set parts = parts + [hours ~ ' മണിക്കൂർ'] %} {% endif %} {% if minutes > 0 %} {% set parts = parts + [minutes ~ (' നിമിഷം' if minutes == 1 else ' നിമിഷങ്ങൾ')] %} {% endif %} {% if seconds > 0 %} {% set parts = parts + [seconds ~ (' നൊടി' if seconds == 1 else ' നൊടികൾ')] %} {% endif %} {% if slots.name is defined %}{{ slots.name | trim }} എന്ന {% endif %}നേരക്കരുവിയിൽ നിന്ന് {{ parts | join(' ') }} കുറച്ചു"
+      },
+      "HassIncreaseTimer": {
+        "default": "{% set numbers = {'ഒന്ന്': 1, 'ഒരു': 1, 'രണ്ട്': 2, 'മൂന്ന്': 3, 'നാല്': 4, 'അഞ്ച്': 5, 'ആറ്': 6, 'ഏഴ്': 7, 'എട്ട്': 8, 'ഒൻപത്': 9, 'ഒമ്പത്': 9, 'പത്ത്': 10} %} {% set hours = numbers.get(slots.hours | default(''), slots.hours | default(0)) | int %} {% set minutes = numbers.get(slots.minutes | default(''), slots.minutes | default(0)) | int %} {% set seconds = numbers.get(slots.seconds | default(''), slots.seconds | default(0)) | int %} {% set parts = [] %} {% if hours > 0 %} {% set parts = parts + [hours ~ ' മണിക്കൂർ'] %} {% endif %} {% if minutes > 0 %} {% set parts = parts + [minutes ~ (' നിമിഷം' if minutes == 1 else ' നിമിഷങ്ങൾ')] %} {% endif %} {% if seconds > 0 %} {% set parts = parts + [seconds ~ (' നൊടി' if seconds == 1 else ' നൊടികൾ')] %} {% endif %} {% if slots.name is defined %}{{ slots.name | trim }} എന്ന {% endif %}നേരക്കരുവിയിലേക്ക് {{ parts | join(' ') }} കൂട്ടി"
+      },
+      "HassMediaPlayerMute": {
+        "default": "ഒച്ചയില്ലാതാക്കി"
+      },
+      "HassVacuumReturnToBase": {
+        "default": "തിരികെ അയച്ചു"
+      },
+      "HassListRemoveItem": {
+        "item_deleted": "{{ slots.item }} നീക്കം ചെയ്തു"
+      },
+      "HassRespond": {
+        "default": "",
+        "hello": "ഹോം അസിസ്റ്റന്റിൽനിന്നും നമസ്കാരം.",
+        "listening": "ഇല്ല, നിങ്ങൾ ഉണർത്ത് വാക്ക് ഉച്ചരിക്കുമ്പോൾ മാത്രമാണ് ഞാൻ ശബ്ദം പതിവു ചെയ്യുന്നത്.",
+        "data": "നിങ്ങളുടെ വിവരങ്ങൾ നിങ്ങളുടെ ഹോം അസിസ്റ്റന്റ് സെർവറിലേക്കാണ് അയയ്ക്കുന്നത്.",
+        "commands": "നിങ്ങൾക്ക് എന്തൊക്കെ ചോദിക്കാനാകുമെന്ന് അറിയാൻ ഹോം ഡാഷ് അസ്സിസ്റ്റന്റ് ഡോട്ട് ഐ. ഒ. സ്ലാഷ് വോയ്സ് സന്ദർശിക്കുക.",
+        "creator": "ലോകമെമ്പാടുമുള്ള ഉദ്യമപരീക്ഷണകുതകികൾ ചേർന്ന അതിശയകരമായ ഹോം അസിസ്റ്റന്റ് കൂട്ടമാണ് എന്നെ ഉണ്ടാക്കിയത്."
+      }
+    }
+  }
+}

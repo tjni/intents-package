@@ -86,6 +86,38 @@
         }
       ]
     },
+    "HassFanSetSpeed": {
+      "data": [
+        {
+          "sentences": [
+            "imposta [<the>]<fan> al {fan_speed:percentage} per cento"
+          ],
+          "metadata": {
+            "slot_combination": "default"
+          },
+          "requires_context": {
+            "area": {
+              "slot": true
+            }
+          },
+          "response": "default"
+        },
+        {
+          "sentences": [
+            "imposta [<the>] {name} al {fan_speed:percentage} per cento"
+          ],
+          "metadata": {
+            "slot_combination": "name_only"
+          },
+          "requires_context": {
+            "domain": [
+              "fan"
+            ]
+          },
+          "response": "default"
+        }
+      ]
+    },
     "HassGetCurrentDate": {
       "data": [
         {
@@ -274,6 +306,42 @@
           "sentences": [
             "metti in pausa la musica",
             "pausa (la musica|il programma|il media player)"
+          ],
+          "metadata": {
+            "slot_combination": "default"
+          },
+          "requires_context": {
+            "area": {
+              "slot": true
+            }
+          },
+          "response": "default"
+        }
+      ]
+    },
+    "HassMediaPlayerMute": {
+      "data": [
+        {
+          "sentences": [
+            "<mute> [<the>] <media>"
+          ],
+          "metadata": {
+            "slot_combination": "default"
+          },
+          "requires_context": {
+            "area": {
+              "slot": true
+            }
+          },
+          "response": "default"
+        }
+      ]
+    },
+    "HassMediaPlayerUnmute": {
+      "data": [
+        {
+          "sentences": [
+            "<unmute> [<the>] <media>"
           ],
           "metadata": {
             "slot_combination": "default"
@@ -1001,6 +1069,42 @@
         }
       ]
     },
+    "media_class": {
+      "values": [
+        {
+          "in": "artista",
+          "out": "artist"
+        },
+        {
+          "in": "(album|disco)",
+          "out": "album"
+        },
+        {
+          "in": "(canzone|traccia|brano)",
+          "out": "track"
+        },
+        {
+          "in": "(playlist|lista di riproduzione)",
+          "out": "playlist"
+        },
+        {
+          "in": "podcast",
+          "out": "podcast"
+        },
+        {
+          "in": "film",
+          "out": "movie"
+        },
+        {
+          "in": "(serie [tv]|programma|episodio)",
+          "out": "tv_show"
+        },
+        {
+          "in": "(radio|stazione radio)",
+          "out": "radio"
+        }
+      ]
+    },
     "volume_step": {
       "values": [
         {
@@ -1095,7 +1199,7 @@
     "percent": "([ ]%|( per[ ]cento)|( su cento))",
     "made": "(fatto|costruito|prodotto|generato)",
     "created": "creato",
-    "fan": "(ventol(a|e) | ventilator(e|i) | ventilazione | climatizzator(e|i) | condizionator(e|i))",
+    "fan": "(ventol(a|e) | ventilator(e|i) | ventilazione)",
     "is": "(è|sono|sta|stanno|risulta|risultano|si trova|si trovano)",
     "what_is": "(qual[e] è | qual'è | quant(o |')è | com(e |')è | che | dimmi | sai dirmi)",
     "how_is": "(com(e |')è | come (sta|stanno|va|vanno))",
@@ -1105,9 +1209,20 @@
     "are_any": "(c'è|c'e'|ci sono|ci sta[nno]) [qualche|alcun(e|i)|de(i|gli|lle)]",
     "are_all": "<all> [<the>]",
     "lockable": "[<the>] (port(a|e)|porton(e|i)|cancell(o|i)|serratur(a|e)|lucchett(o|i))",
+    "mower_noun": "(tosaerba|tagliaerba|taglierba|rasaerba)",
+    "mower_ref": "[robot ]<mower_noun>",
+    "mow": "(tagli(a[mi]|are) | tos(a[mi]|are) | falci(a[mi]|are)) ([l']erba|il prato)",
+    "mower_stop": "(ferm(a|are) | arrest(a|are) | annull(a|are) | interromp(i|ere) | spegn(i|ere) | stopp(a|are))",
+    "mower_return": "(riport(a|are) | port(a|are) | rimand(a|are) | mand(a|are) | mett(i|ere) | rimett(i|ere) | <to_do> tornare)",
+    "mower_go": "(va|torna)",
     "light": "( [punt(o|i)] luce | luci | lampad[in](a|e) | lampadari[o])",
     "to_lock": "(chiud(i|ere)|blocca[re])",
     "unlock": "(apri[re]|sblocca[re]|schiud(i|ere))",
+    "track": "(canzone|traccia|brano)",
+    "media": "(musica|film|programma|episodio|elemento|<track>|media player)",
+    "mute": "(silenzi(a|are) | mut(a|are) | metti [in] muto | (disattiv(a|are)|spegn(i|ere)) [[l']audio])",
+    "unmute": "(smut(a|are) | (ri)accend(i|ere) | riattiv(a|are) [[l']audio] | togli [il] muto)",
+    "play": "(riprod(uci|urre) | suon(a|are) | ascolt(a|are) | guard(a|are) | <to_do> partire | metti [su] | (fammi|fatemi) (sentire|vedere))",
     "timer_set": "(avvia|imposta|crea|attiva)",
     "timer_cancel": "(cancell(a|are)|stopp(a|are)|annull(a|are)|disattiv(a|are)|arrest(a|are)|ferm(a|are)|interromp(i|ere))",
     "open": "(apr(i|ire) | alz(a|are))",
@@ -1165,7 +1280,11 @@
       "no_device_class_in_floor_exposed": "Mi dispiace, nel piano {{ floor }} nessun dispositivo appartenente alla classe {{ device_class }} è stato esposto",
       "duplicate_entities": "Mi dispiace, esistono più dispositivi chiamati {{ entity }}",
       "duplicate_entities_in_area": "Mi dispiace, nell'area {{ area }} esistono più dispositivi chiamati {{ entity }}",
-      "duplicate_entities_in_floor": "Mi dispiace, nel piano {{ floor }} esistono più dispositivi chiamati {{ entity }}"
+      "duplicate_entities_in_floor": "Mi dispiace, nel piano {{ floor }} esistono più dispositivi chiamati {{ entity }}",
+      "duplicate_targets": "Mi dispiace, più di un dispositivo corrisponde alla tua richiesta",
+      "timer_not_found": "Mi dispiace, non ho trovato quel timer",
+      "multiple_timers_matched": "Mi dispiace, non posso agire su più timer contemporaneamente",
+      "no_timer_support": "Mi dispiace, i timer non sono supportati su questo dispositivo"
     },
     "intents": {
       "HassGetState": {
@@ -1229,6 +1348,9 @@
       "HassListAddItem": {
         "item_added": "Aggiunto {{ slots.item }}"
       },
+      "HassMediaPlayerUnmute": {
+        "default": "Audio riattivato"
+      },
       "HassGetCurrentDate": {
         "default": "{% set months = {\n   1: 'gennaio',\n   2: 'febbraio',\n   3: 'marzo',\n   4: 'aprile',\n   5: 'maggio',\n   6: 'giugno',\n   7: 'luglio',\n   8: 'agosto',\n   9: 'settembre',\n   10: 'ottobre',\n   11: 'novembre',\n   12: 'dicembre',\n} %} {% set weekday = [ 'lunedì', 'martedì', 'mercoledì', 'giovedì', 'venerdì', 'sabato', 'domenica' ] %} È {{ weekday[slots.date.weekday()] }}, {{slots.date.day}} {{ months[slots.date.month] }} {{ slots.date.year }}\n"
       },
@@ -1240,6 +1362,9 @@
       },
       "HassVacuumCleanArea": {
         "default": "Sto pulendo {{ slots.area }}"
+      },
+      "HassLawnMowerStartMowing": {
+        "default": "Taglio avviato"
       },
       "HassGetWeather": {
         "default": "{% set weather_condition = {\n  'clear': 'e limpido',\n  'clear-night': 'e serata limpida',\n  'cloudy': 'e nuvoloso',\n  'exceptional': 'ed eccezionale',\n  'fog': 'e nebbia',\n  'hail': 'e grandine',\n  'lightning': 'e lampi',\n  'lightning-rainy': 'con lampi e pioggia',\n  'partlycloudy': 'e parzialmente nuvoloso',\n  'pouring': 'e pioggia intensa',\n  'rainy': 'e pioggia',\n  'snowy': 'e neve',\n  'snowy-rainy': 'con pioggia mista a neve',\n  'sunny': 'e soleggiato',\n  'windy': 'e ventoso',\n  'windy-variant': 'e ventoso variabile'\n} %} {{ state.attributes.get('temperature') }} {{ state.attributes.get('temperature_unit') }} {{ weather_condition.get((state.state | string).lower(), \"\") }}\n"
@@ -1254,6 +1379,9 @@
       "HassCancelAllTimers": {
         "default": "{% if slots.canceled < 1: %} Non è stato annullato alcun timer. {% elif slots.canceled == 1: %} È stato annullato 1 timer {% else: %} Sono stati annullati {{ slots.canceled }} timer. {% endif %}\n",
         "area": "{% if slots.canceled < 1: %} Nessun timer è stato annullato in  {{ slots.area }}. {% elif slots.canceled == 1: %} È stato annullato 1 timer in {{ slots.area }}. {% else: %} Sono stati annullati {{ slots.canceled }} timer in {{ slots.area }}. {% endif %}\n"
+      },
+      "HassLawnMowerDock": {
+        "default": "Tornando alla base"
       },
       "HassBroadcast": {
         "default": "D'accordo"
@@ -1280,11 +1408,17 @@
       "HassCancelTimer": {
         "default": "Timer cancellato"
       },
+      "HassMediaSearchAndPlay": {
+        "default": "{% if slots.media: %}\nRiproduzione avviata\n{% else: %}\nMedia non trovato\n{% endif %}\n"
+      },
       "HassClimateGetTemperature": {
         "default": "{% set current_temperature = state_attr(state.entity_id, 'current_temperature') %} {% set temperature = state.state if current_temperature is none else current_temperature %} {% if temperature == 1: %} {{ temperature }} grado {% else: %} {{ temperature }} gradi {% endif %}\n"
       },
       "HassSetVolume": {
         "default": "Volume impostato"
+      },
+      "HassFanSetSpeed": {
+        "default": "Velocità impostata"
       },
       "HassListCompleteItem": {
         "item_completed": "Spuntato {{ slots.item }}"
@@ -1295,8 +1429,14 @@
       "HassIncreaseTimer": {
         "default": "Timer aggiornato"
       },
+      "HassMediaPlayerMute": {
+        "default": "Audio disattivato"
+      },
       "HassVacuumReturnToBase": {
         "default": "Tornando alla base"
+      },
+      "HassListRemoveItem": {
+        "item_deleted": "Rimosso {{ slots.item }}"
       },
       "HassRespond": {
         "default": "",
