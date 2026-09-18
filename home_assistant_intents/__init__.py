@@ -110,6 +110,9 @@ class ErrorKey(str, Enum):
     NO_TIMER_SUPPORT = "no_timer_support"
     """Voice satellite does not support timers."""
 
+    DUPLICATE_TARGETS = "duplicate_targets"
+    """More than one device matched a voice command or query."""
+
 
 @dataclass
 class LanguageScores:
